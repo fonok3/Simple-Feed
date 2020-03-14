@@ -1,0 +1,32 @@
+line_length: 136
+
+disabled_rules:
+  - todo
+  - force_try
+  - force_cast
+#  - trailing_comma
+  - large_tuple
+  - type_body_length
+  - file_length
+  - cyclomatic_complexity
+  - function_body_length
+  - block_based_kvo
+  - shorthand_operator
+  - function_parameter_count
+  - nesting
+
+excluded:
+  - Pods
+
+identifier_name:
+  excluded:
+    - id
+    - to
+    - ui
+    - on
+    - us
+    - no
+
+type_name:
+  excluded:
+    - UI

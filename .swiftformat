@@ -1,0 +1,8 @@
+# format options
+--commas inline
+
+# file options
+
+# rules
+
+--header "\nSimple Feed\nCopyright © {created.year} Florian Herzog. All rights reserved.\n"
