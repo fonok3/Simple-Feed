@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="1.0.0">
+    <entity name="Article" representedClassName=".Article" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" defaultValueString="29.12.16, 16:31" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastEdited" optional="YES" attributeType="Date" defaultDateTimeInterval="-978310800" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="read" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagged" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="titleImageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Feed" inverseName="feedItems" inverseEntity="Feed" syncable="YES"/>
+    </entity>
+    <entity name="Feed" representedClassName=".Feed">
+        <attribute name="deleted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastEdited" optional="YES" attributeType="Date" defaultDateTimeInterval="-978310800" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <relationship name="feedItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="publisher" inverseEntity="Article" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FeedGroup" inverseName="feeds" inverseEntity="FeedGroup" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="FeedGroup" representedClassName=".FeedGroup" syncable="YES">
+        <attribute name="deleted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" elementID="name" syncable="YES"/>
+        <relationship name="feeds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Feed" inverseName="groups" inverseEntity="Feed" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Article" positionX="457" positionY="252" width="128" height="210"/>
+        <element name="Feed" positionX="250" positionY="225" width="128" height="150"/>
+        <element name="FeedGroup" positionX="45" positionY="303" width="128" height="105"/>
+    </elements>
+</model>

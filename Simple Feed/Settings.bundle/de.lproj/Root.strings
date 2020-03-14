@@ -1,0 +1,92 @@
+/* Article View */
+"ARTICLE_VIEW" = "Artikel Ansicht";
+
+/* Automatic Reading Mode */
+"AUTOMATIC_READING_MODE" = "Lesemodus automatisch aktivieren";
+
+/* Article */
+"ARTICLE" = "Artikel";
+
+/* Unread after */
+"ARTICLES_AFTER_DAYS" = "Löschen nach";
+
+/* One Day */
+"ONE_DAY" = "Einem Tag";
+
+/* Two Days */
+"TWO_DAYS" = "Zwei Tagen";
+
+/* Two Days */
+"THREE_DAYS" = "Drei Tagen";
+
+/* Two Days */
+"FOUR_DAYS" = "Vier Tagen";
+
+/* Two Days */
+"FIVE_DAYS" = "Fünf Tagen";
+
+/* Settings */
+"SETTINGS" = "Einstellungen";
+
+/* Licenses */
+"LICENSES" = "Lizenzen";
+
+/* Contact */
+"CONTACT" = "Kontakt";
+
+/* Url */
+"URL" = "Webseite";
+
+/* Feed View */
+"FEED" = "Feed";
+
+/* Overview */
+"FEED_VIEW" = "Ansicht";
+
+/* Standard */
+"STANDARD" = "Standardansicht";
+
+/* List */
+"LIST" = "Listenansicht";
+
+/* Enable iCloud */
+"ENABLE_ICLOUD" = "iCloud aktivieren";
+
+/* Only load images in wifi */
+"IMAGES_ON_WIFI" = "Bilder nur im Wlan laden";
+
+/* Keep last read Article */
+"KEEP_LAST_READ" = "Zuletzt gelesenen Artikel behalten";
+
+/* Clean up Database */
+"CLEAN_UP" = "Datenbank aufräumen";
+
+/* Database */
+"DATABASE" = "Datenbank";
+
+/* Database Clean Up Description*/
+"DATABASE_CLEANUP_DESCRIPTION" = "Sollte die App beim Lesen von Artikeln abstürzen, hilft es die Datenbank aufzuräumen. Dabei bleiben alle Feeds erhalten. Jedoch werden die Artikel neu geladen.";
+
+/* Image Loading */
+"IMAGE_LOADING" = "Titelbilder laden";
+
+/* Always */
+"ALWAYS" = "Immer";
+
+/* On Wifi */
+"ON_WIFI" = "Im WLAN";
+
+/* Never */
+"NEVER" = "Nie";
+
+/* Preview Lines */
+"PREVIEW_LINES" = "Vorschauzeilen";
+
+/* Title Lines */
+"TITLE_LINES" = "Titelzeilen";
+
+/* None */
+"NONE" = "Keine";
+
+/* Group feed by publisher */
+"GROUP_NEWS_FEED_BY_FEED" = "Feed nach Quelle gruppieren";

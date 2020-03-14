@@ -1,0 +1,166 @@
+/* Add new Feed */
+"ADD_NEW_FEED" = "Add Feed";
+
+/* Cancel */
+"CANCEL" = "Cancel";
+
+/* Delete */
+"DELETE" = "Delete";
+
+/* Enter feed URL */
+"ENTER_URL" = "Enter URL";
+
+/* Feeds */
+"FEEDS" = "Feeds";
+
+/* Feed URL */
+"FEED_URL" = "Feed URL";
+
+/* News Feed */
+"NEWS_FEED" = "Feed";
+
+/* Read */
+"READ" = "Read";
+
+/* Read Articles */
+"READ_ARTICLES" = "Read";
+
+/* Save */
+"SAVE" = "Save";
+
+/* Search for Feeds */
+"SEARCH_FOR_FEEDS" = "Search for Feeds";
+
+/* Settings */
+"SETTINGS" = "Settings";
+
+/* Tag */
+"TAG" = "Tag";
+
+/* Tagged Articles */
+"TAGGED_ARTICLES" = "Tagged";
+
+/* Unread */
+"UNREAD" = "Unread";
+
+/* Untag */
+"UNTAG" = "Untag";
+
+/* Add Feed */
+"ADD_FEED" = "Add Feed";
+
+/* Add Feed by url */
+"ADD_FEED_URL" = "Enter Feed Url";
+
+/* Search Feed */
+"SEARCH_FEED" = "Search Feed";
+
+/* Add */
+"ADD" = "Add";
+
+/* Add Feed Description */
+"ADD_FEED_DESCRIPTION" = "For adding a Feed go to the Feeds tab and hit the Plus Icon. Just search for the name or enter the complete url.";
+
+/* No unread articles */
+"NO_UNREAD_ARTICLES" = "No unread Articles";
+
+/* Fail to load Message  */
+"FAIL_TO_LOAD_FEED_MESSAGE" = "Could not find feed. Please check the entered adress.";
+
+/* Error */
+"ERROR" = "Error";
+
+/* Okay */
+"OKAY" = "Okay";
+
+/* Delete Articles Header */
+"DELETE_ARTICLES_HEADER" = "Delete read Articles";
+
+/* Delete Articles Message */
+"DELETE_ARTICLES_MESSAGE" = "Do you want to delete all read articles?";
+
+/* Read Feed Title */
+"READ_FEED_TITLE" = "Read Feed";
+
+/* Read Feed Title */
+"READ_FEED_MESSAGE" = "Do you want do mark this feed's articles as read?";
+
+/* Read Feed Title */
+"EDIT_FEED" = "Edit Feed";
+
+/* Read Feed Title */
+"FEED_TITLE" = "Feed Title";
+
+/* Delete Feed */
+"DELETE_FEED" = "Delete Feed";
+
+/* Save Changes */
+"SAVE_CHANGES" = "Save Changes";
+
+/* Edit */
+"EDIT" = "Edit";
+
+/* Enter Search */
+"ENTER_SEARCH" = "Enter Search or URL";
+
+/* Searching */
+"SEARCHING" = "Searching";
+
+/* No Results */
+"NO_RESULTS" = "No Results";
+
+/* Deleting */
+"DELETING" = "Deleting";
+
+/* Open Article Failed */
+"ERROR_OPENING_ARTICLE" = "Can't open article.";
+
+/* Clean Up Database */
+"DATABASE_CLEANING" = "Clean up Database";
+
+/* Database Cleaning Confirm */
+"DATABASE_CLEANING_CONFIRM" = "Do you want to clean up the database?";
+
+"FIX_ISSUES" = "Clean Up";
+
+"ONE_MINUTE_AGO" = "1 Minute ago";
+
+"MINUTES_AGO" = "%i Minutes ago";
+
+"ONE_HOUR_AGO" = "1 Hour ago";
+
+"HOURS_AGO" = "%i Hours ago";
+
+"ONE_DAY_AGO" = "1 Day ago";
+
+"DAYS_AGO" = "%i Days ago";
+
+/* Share */
+"SHARE" = "Share";
+
+/* Offline */
+"OFFLINE" = "No Internet";
+
+/* Title */
+"TITLE" = "Title";
+
+/* Group */
+"GROUP" = "Group";
+
+/* Edit Group */
+"EDIT_GROUP" = "Edit Group";
+
+/* Add Feeds */
+"ADD_FEEDS" = "Add Feeds";
+
+/* Add to Groups */
+"ADD_TO_GROUPS" = "Add to Groups";
+
+/* Untitled */
+"UNTITLED" = "Untitled";
+
+/* No Articles */
+"NO_ARTICLES" = "No Articles";
+
+/* Open */
+"OPEN" = "Öffnen";

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11224.2" systemVersion="15G31" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="1.0.0">
+    <entity name="Feed" representedClassName=".Feed">
+        <attribute name="lastUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <relationship name="feedItem" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FeedItem" inverseName="publisher" inverseEntity="FeedItem" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="FeedItem" representedClassName=".Article" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="read" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagged" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="titleImageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Feed" inverseName="feedItem" inverseEntity="Feed" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Feed" positionX="-1935" positionY="2718" width="128" height="103"/>
+        <element name="FeedItem" positionX="-2214" positionY="2574" width="128" height="178"/>
+    </elements>
+</model>
