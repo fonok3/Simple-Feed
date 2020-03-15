@@ -42,7 +42,9 @@ extension NewsFeedTVC {
         checkOffline()
         tableView.separatorColor = .clear
         if fetchedResultsController?.fetchedObjects?.count ?? 0 == 0 {
-            tableView.backgroundView = EmptyFRCView(image: UIImage(named: "Feed"), title: NSLocalizedString("NO_ARTICLES", comment: "No Feeds"), subtitle: NSLocalizedString("ADD_FEED_DESCRIPTION", comment: "No Data Events"))
+            tableView.backgroundView = EmptyFRCView(image: UIImage(named: "Feed"),
+                                                    title: NSLocalizedString("NO_ARTICLES", comment: "No Feeds"),
+                                                    subtitle: NSLocalizedString("ADD_FEED_DESCRIPTION", comment: "No Data Events"))
             tableView.separatorColor = .clear
         } else {
             tableView.backgroundView = nil
@@ -50,28 +52,28 @@ extension NewsFeedTVC {
     }
 
     func checkOffline() {
-        let x = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 30))
+        let offlineView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 30))
         let label = UILabel(frame: CGRect(x: 5, y: 5, width: view.frame.width, height: 20))
         label.text = NSLocalizedString("OFFLINE", comment: "Offline")
         label.textColor = FHColor.label.primary
 
-        x.addSubview(label)
-        x.backgroundColor = FHColor.fill.tertiary
+        offlineView.addSubview(label)
+        offlineView.backgroundColor = FHColor.fill.tertiary
 
         let networkStatus = Reachability.connectionStatus()
         switch networkStatus {
         case .offline, .unknown:
-
-            tableView.tableHeaderView = x
+            tableView.tableHeaderView = offlineView
         default:
             tableView.tableHeaderView = nil
         }
     }
 
     func deleteOldArticles() {
-        let oldestPostDate = Date().adding(days: -UserDefaults.standard.integer(forKey: userDefaults.DELETE_ARTICLE_AFTER_DAYS))
+        let oldestPostDate = Date().adding(days: -UserDefaults.standard.integer(forKey: SFUserDefaults.deleteArticleAfterDays))
 
-        let deletePredicate = NSPredicate(format: "tagged == false AND lastRead == false AND date <= %@", argumentArray: [oldestPostDate])
+        let deletePredicate = NSPredicate(format: "tagged == false AND lastRead == false AND date <= %@",
+                                          argumentArray: [oldestPostDate])
         CoreDataManager.deleteObjects(entity: "Article", with: deletePredicate)
     }
 }

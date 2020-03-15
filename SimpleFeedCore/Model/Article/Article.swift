@@ -24,12 +24,17 @@ public class Article: NSManagedObject {
     @NSManaged public var publisher: Feed
     @NSManaged public var read: Bool
 
-    static func getArticle(with url: String, and title: String, in context: NSManagedObjectContext = CoreDataService.shared.viewContext) -> (Article) {
+    static func getArticle(with url: String, and title: String,
+                           in context: NSManagedObjectContext = CoreDataService.shared.viewContext) -> (Article) {
         return getArticle(with: url, and: title, in: context).article
     }
 
-    static func getArticle(with url: String, and title: String, in context: NSManagedObjectContext = CoreDataService.shared.viewContext) -> (article: Article, new: Bool) {
-        let fetchResults: [Article] = CoreDataService.shared.fetchData(predicate: NSPredicate(format: "link = %@ AND title = %@", argumentArray: [url, title]), curContext: context)
+    static func getArticle(with url: String, and title: String,
+                           in context: NSManagedObjectContext = CoreDataService.shared.viewContext)
+        -> (article: Article, new: Bool) {
+        let fetchResults: [Article] = CoreDataService.shared.fetchData(
+            predicate: NSPredicate(format: "link = %@ AND title = %@", argumentArray: [url, title]), curContext: context
+        )
 
         if let article: Article = fetchResults.first {
             return (article: article, new: false)

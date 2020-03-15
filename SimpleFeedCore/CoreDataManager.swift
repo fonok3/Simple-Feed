@@ -15,7 +15,10 @@ public class CoreDataManager: NSObject {
         return fetch(entity: entity, with: nil, and: nil)
     }
 
-    public static func fetch(entity: String, with predicate: NSPredicate?, and sortDescriptors: [NSSortDescriptor]? = nil, in context: NSManagedObjectContext = CoreDataService.shared.viewContext) -> [NSManagedObject] {
+    public static func fetch(entity: String,
+                             with predicate: NSPredicate?,
+                             and sortDescriptors: [NSSortDescriptor]? = nil,
+                             in context: NSManagedObjectContext = CoreDataService.shared.viewContext) -> [NSManagedObject] {
         var items = [NSManagedObject]()
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)

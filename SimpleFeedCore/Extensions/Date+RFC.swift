@@ -5,10 +5,13 @@
 
 import Foundation
 
-private let RFC822dateFormatsWithComma = ["EEE, d MMM yyyy HH:mm:ss zzz", "EEE, d MMM yyyy HH:mm zzz", "EEE, d MMM yyyy HH:mm:ss", "EEE, d MMM yyyy HH:mm"]
-private let RFC822dateFormatsWithoutComma = ["d MMM yyyy HH:mm:ss zzz", "d MMM yyyy HH:mm zzz", "d MMM yyyy HH:mm:ss", "d MMM yyyy HH:mm"]
+private let RFC822dateFormatsWithComma = ["EEE, d MMM yyyy HH:mm:ss zzz", "EEE, d MMM yyyy HH:mm zzz",
+                                          "EEE, d MMM yyyy HH:mm:ss", "EEE, d MMM yyyy HH:mm"]
+private let RFC822dateFormatsWithoutComma = ["d MMM yyyy HH:mm:ss zzz", "d MMM yyyy HH:mm zzz",
+                                             "d MMM yyyy HH:mm:ss", "d MMM yyyy HH:mm"]
 
-private let RFC3339dateFormatsWithComma = ["yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ", "yyyy'-'MM'-'dd'T'HH':'mm':'ss"]
+private let RFC3339dateFormatsWithComma = ["yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ",
+                                           "yyyy'-'MM'-'dd'T'HH':'mm':'ss"]
 
 private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()

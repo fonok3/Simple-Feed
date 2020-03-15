@@ -54,16 +54,21 @@ class NewsFeedTVCFeed: NewsFeedTVC {
         }
     }
 
-    override func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    override func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any,
+                             at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         super.controller(controller, didChange: anObject, at: indexPath, for: type, newIndexPath: newIndexPath)
         setUpReadButton()
     }
 
     @available(iOS 11.0, *)
-    override func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    override func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+        -> UISwipeActionsConfiguration? {
         let obj = fetchedResultsController?.object(at: indexPath)
 
-        let readAction = UIContextualAction(style: obj!.read ? .normal : .normal, title: NSLocalizedString(obj!.read ? "UNREAD" : "READ", comment: "read")) { _, _, completionHandler in
+        let readAction = UIContextualAction(
+            style: obj!.read ? .normal : .normal,
+            title: NSLocalizedString(obj!.read ? "UNREAD" : "READ", comment: "read")
+        ) { _, _, completionHandler in
             completionHandler(true)
             obj?.changeReadStatus()
         }

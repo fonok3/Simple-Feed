@@ -16,7 +16,8 @@ class NewsFeedTVCRead: NewsFeedTVC {
         fetchRequest = Article.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "read = %@ AND tagged = %@", argumentArray: [true, false])
 
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "readDate", ascending: false), NSSortDescriptor(key: "date", ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "readDate", ascending: false),
+                                        NSSortDescriptor(key: "date", ascending: false)]
     }
 
     override func viewDidLoad() {
@@ -29,14 +30,19 @@ class NewsFeedTVCRead: NewsFeedTVC {
     }
 
     override func updateUnreadLabel() {
-        unreadLabel.text = String(fetchedResultsController!.fetchedObjects!.count) + " " + NSLocalizedString("READ", comment: "Read Articles")
+        unreadLabel.text = String(fetchedResultsController!.fetchedObjects!.count) + " "
+            + NSLocalizedString("READ", comment: "Read Articles")
     }
 
     @available(iOS 11.0, *)
-    override func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    override func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+        -> UISwipeActionsConfiguration? {
         let obj = fetchedResultsController?.object(at: indexPath)
 
-        let readAction = UIContextualAction(style: obj!.read ? .destructive : .normal, title: NSLocalizedString(obj!.read ? "UNREAD" : "READ", comment: "read")) { _, _, completionHandler in
+        let readAction = UIContextualAction(
+            style: obj!.read ? .destructive : .normal,
+            title: NSLocalizedString(obj!.read ? "UNREAD" : "READ", comment: "read")
+        ) { _, _, completionHandler in
             completionHandler(true)
             obj?.changeReadStatus()
         }

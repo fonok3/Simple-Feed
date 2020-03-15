@@ -5,12 +5,12 @@
 
 import UIKit
 
-protocol WebImageViewDelegate {
+protocol WebImageViewDelegate: class {
     func loadingError()
 }
 
 class WebImageView: UIImageView {
-    var delegate: WebImageViewDelegate?
+    weak var delegate: WebImageViewDelegate?
 
     private let loadingView: DottedLoadingView = {
         let view = DottedLoadingView()
@@ -69,16 +69,6 @@ class WebImageView: UIImageView {
         super.layoutSubviews()
 
         backgroundColor = UIColor(displayP3Red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-
-//        addSubview(loadingView)
-//
-//        addConstraintsWithFormat("H:[v0(65)]", views: loadingView)
-//        addConstraintsWithFormat("V:[v0(15)]", views: loadingView)
-//
-//        addConstraints([
-//            NSLayoutConstraint(item: loadingView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),
-//            NSLayoutConstraint(item: loadingView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
-//            ])
 
         contentMode = .scaleAspectFill
     }

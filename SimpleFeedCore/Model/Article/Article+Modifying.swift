@@ -25,8 +25,10 @@ public extension Article {
             ($0 as? Group)?.lastEdited = ($0 as? Group)?.lastEdited ?? Date()
         }
 
-        let articles: [Article] = CoreDataService.shared.fetchData(predicate: NSPredicate(format: "lastRead = %@", argumentArray: [true]),
-                                                                   curContext: managedObjectContext)
+        let articles: [Article] = CoreDataService.shared.fetchData(
+            predicate: NSPredicate(format: "lastRead = %@", argumentArray: [true]),
+            curContext: managedObjectContext
+        )
         for article in articles {
             article.lastRead = false
         }

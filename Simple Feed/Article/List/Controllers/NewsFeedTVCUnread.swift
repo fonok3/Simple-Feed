@@ -13,8 +13,9 @@ class NewsFeedTVCUnread: NewsFeedTVC {
 
         title = NSLocalizedString("NEWS_FEED", comment: "News Feed")
         fetchRequest = Article.fetchRequest()
-        if UserDefaults.standard.bool(forKey: userDefaults.KEEP_LAST_READ) {
-            fetchRequest.predicate = NSPredicate(format: "(read = %@ OR lastRead = %@ OR tagged = %@)", argumentArray: [false, true, true])
+        if UserDefaults.standard.bool(forKey: SFUserDefaults.keepLastRead) {
+            fetchRequest.predicate = NSPredicate(format: "(read = %@ OR lastRead = %@ OR tagged = %@)",
+                                                 argumentArray: [false, true, true])
         } else {
             fetchRequest.predicate = NSPredicate(format: "(read = %@)", argumentArray: [false])
         }
@@ -35,7 +36,8 @@ class NewsFeedTVCUnread: NewsFeedTVC {
         setUpReadButton()
     }
 
-    override func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    override func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any,
+                             at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         super.controller(controller, didChange: anObject, at: indexPath, for: type, newIndexPath: newIndexPath)
     }
 }

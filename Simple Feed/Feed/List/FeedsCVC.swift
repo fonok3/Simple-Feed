@@ -120,8 +120,8 @@ class FeedsCVC: UICollectionViewController, FeedCellDelegate, NSFetchedResultsCo
             fetchedResultsController?.delegate = nil
 
             var index = 0
-            for f in feeds {
-                f.index = NSNumber(value: index)
+            for feed in feeds {
+                feed.index = NSNumber(value: index)
                 index += 1
             }
             CoreDataManager.saveContext()
@@ -187,10 +187,17 @@ class FeedsCVC: UICollectionViewController, FeedCellDelegate, NSFetchedResultsCo
         cell.editing = isEditing
 
         if abstractFeed is Feed {
-            let articles = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "publisher.link = %@ AND read = %@", argumentArray: [(abstractFeed as! Feed).link, false])) as! [Article]
+            let articles = CoreDataManager.fetch(
+                entity: "Article",
+                with: NSPredicate(format: "publisher.link = %@ AND read = %@",
+                                  argumentArray: [(abstractFeed as! Feed).link, false])
+            ) as! [Article]
             cell.readIndicator.isHidden = (articles.count == 0)
         } else {
-            let articles = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "publisher IN %@ AND read = %@", argumentArray: [(abstractFeed as! Group).feeds!, false])) as! [Article]
+            let articles = CoreDataManager.fetch(entity: "Article",
+                                                 with: NSPredicate(format: "publisher IN %@ AND read = %@",
+                                                                   argumentArray: [(abstractFeed as! Group).feeds!,
+                                                                                   false])) as! [Article]
             cell.readIndicator.isHidden = (articles.count == 0)
         }
     }
@@ -217,8 +224,8 @@ class FeedsCVC: UICollectionViewController, FeedCellDelegate, NSFetchedResultsCo
             feeds.insert(feed, at: destinationIndexPath.row)
 
             var index = 0
-            for f in feeds {
-                f.index = NSNumber(value: index)
+            for feed in feeds {
+                feed.index = NSNumber(value: index)
                 index += 1
             }
             CoreDataManager.saveContext()
@@ -280,39 +287,41 @@ class FeedsCVC: UICollectionViewController, FeedCellDelegate, NSFetchedResultsCo
     var blockOperations = [BlockOperation]()
 
     var fetchedResultsController: NSFetchedResultsController<AbstractFeed>? {
-        if _fetchedResultsController != nil, _fetchedResultsController?.managedObjectContext == CoreDataService.shared.viewContext {
-            return _fetchedResultsController!
+        if internalFetchedResultsController != nil,
+            internalFetchedResultsController?.managedObjectContext == CoreDataService.shared.viewContext {
+            return internalFetchedResultsController!
         }
 
         let context = CoreDataService.shared.viewContext
 
         let fetchRequest = NSFetchRequest<AbstractFeed>(entityName: "AbstractFeed")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true), NSSortDescriptor(key: "title", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true),
+                                        NSSortDescriptor(key: "title", ascending: true)]
 
-        // Edit the section name key path and cache name if appropriate.
-        // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                   managedObjectContext: context,
+                                                                   sectionNameKeyPath: nil,
+                                                                   cacheName: nil)
         aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
+        internalFetchedResultsController = aFetchedResultsController
 
         do {
-            try _fetchedResultsController!.performFetch()
+            try internalFetchedResultsController!.performFetch()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        return _fetchedResultsController!
+        return internalFetchedResultsController!
     }
 
-    var _fetchedResultsController: NSFetchedResultsController<AbstractFeed>?
+    var internalFetchedResultsController: NSFetchedResultsController<AbstractFeed>?
 
     func controllerWillChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
         blockOperations = [BlockOperation]()
     }
 
-    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             blockOperations.append(BlockOperation(block: {
@@ -324,7 +333,8 @@ class FeedsCVC: UICollectionViewController, FeedCellDelegate, NSFetchedResultsCo
             }))
         case .update:
             blockOperations.append(BlockOperation(block: {
-                if let cell = self.collectionView?.cellForItem(at: indexPath!) as? FeedCell, let feed = self.fetchedResultsController?.object(at: indexPath!) {
+                if let cell = self.collectionView?.cellForItem(at: indexPath!) as? FeedCell,
+                    let feed = self.fetchedResultsController?.object(at: indexPath!) {
                     self.configureCell(cell, withObject: feed)
                 }
             }))

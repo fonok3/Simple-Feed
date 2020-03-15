@@ -11,7 +11,7 @@ struct FeedlyFeedResponse: Codable {
     var lastUpdated: Date = Date(timeIntervalSince1970: 0)
 
     var title: String = ""
-    var description: String? = nil
+    var description: String?
 
     var website: String = ""
     var subscribers: Int = 0

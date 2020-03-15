@@ -6,14 +6,14 @@
 import SimpleFeedCore
 import UIKit
 
-protocol ShareDelegate {
+protocol ShareDelegate: class {
     func present(link: URL)
 }
 
 class ArticlePreviewVC: UIViewController {
     var article: Article
 
-    var delegate: ShareDelegate?
+    weak var delegate: ShareDelegate?
 
     init(article: Article) {
         self.article = article
@@ -99,7 +99,8 @@ class ArticlePreviewVC: UIViewController {
 
         view.addSubview(image)
         if titleImage != nil {
-            view.addConstraint(NSLayoutConstraint(item: image, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 0.25, constant: 1))
+            view.addConstraint(NSLayoutConstraint(item: image, attribute: .height, relatedBy: .equal,
+                                                  toItem: view, attribute: .height, multiplier: 0.25, constant: 1))
         } else {
             view.addConstraintsWithFormat("V:|[v0(15)]", views: image)
         }
@@ -122,11 +123,13 @@ class ArticlePreviewVC: UIViewController {
     }
 
     lazy var previewActions: [UIPreviewActionItem] = {
-        let readAction = UIPreviewAction(title: NSLocalizedString(self.article.read ? "UNREAD" : "READ", comment: "read"), style: .default) { _, _ in
+        let readAction = UIPreviewAction(title: NSLocalizedString(self.article.read ? "UNREAD" : "READ", comment: "read"),
+                                         style: .default) { _, _ in
             self.article.changeReadStatus()
         }
 
-        let tagAction = UIPreviewAction(title: NSLocalizedString(self.article.tagged ? "UNTAG" : "TAG", comment: "tagging"), style: .default) { _, _ in
+        let tagAction = UIPreviewAction(title: NSLocalizedString(self.article.tagged ? "UNTAG" : "TAG", comment: "tagging"),
+                                        style: .default) { _, _ in
             self.article.changeTaggingStatus()
         }
 

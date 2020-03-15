@@ -5,12 +5,12 @@
 
 import UIKit
 
-protocol HTMLParserDelegate {
+protocol HTMLParserDelegate: class {
     func HTMLParserError(_ parser: HTMLParser, error: String)
 }
 
 class HTMLParser: NSObject, XMLParserDelegate {
-    var delegate: HTMLParserDelegate?
+    weak var delegate: HTMLParserDelegate?
 
     var feedType: FeedType = FeedType.unknown
 
@@ -51,11 +51,12 @@ class HTMLParser: NSObject, XMLParserDelegate {
         }
     }
 
-    func parser(_: XMLParser, didStartElement elementName: String, namespaceURI _: String?, qualifiedName _: String?, attributes attributeDict: [String: String] = [:]) {
+    func parser(_: XMLParser, didStartElement elementName: String,
+                namespaceURI _: String?, qualifiedName _: String?, attributes attributeDict: [String: String] = [:]) {
         currentElementAttributes = attributeDict as NSDictionary
         if elementName == "img", firstImageURL == "" {
-            if let x = (currentElementAttributes["src"] as AnyObject).description, URL(string: x) != nil {
-                firstImageURL = x
+            if let url = (currentElementAttributes["src"] as AnyObject).description, URL(string: url) != nil {
+                firstImageURL = url
             }
         }
     }

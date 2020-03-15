@@ -108,8 +108,8 @@ class FeedsTVC: UITableViewController, NSFetchedResultsControllerDelegate {
             feeds.insert(feed, at: destinationIndexPath.row)
 
             var index = 0
-            for f in feeds {
-                f.index = NSNumber(value: index)
+            for feed in feeds {
+                feed.index = NSNumber(value: index)
                 index += 1
             }
             CoreDataManager.saveContext()
@@ -121,8 +121,8 @@ class FeedsTVC: UITableViewController, NSFetchedResultsControllerDelegate {
             fetchedResultsController?.delegate = nil
 
             var index = 0
-            for f in feeds {
-                f.index = NSNumber(value: index)
+            for feed in feeds {
+                feed.index = NSNumber(value: index)
                 index += 1
             }
             CoreDataManager.saveContext()
@@ -159,10 +159,16 @@ class FeedsTVC: UITableViewController, NSFetchedResultsControllerDelegate {
 
         var subtitleString = ""
 
-        if let feed = object as? Feed, let articles = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "publisher.link = %@ AND read = %@", argumentArray: [feed.link, false])) as? [Article] {
+        if let feed = object as? Feed, let articles = CoreDataManager.fetch(
+            entity: "Article",
+            with: NSPredicate(format: "publisher.link = %@ AND read = %@", argumentArray: [feed.link, false])
+        ) as? [Article] {
             cell.detailTextLabel?.textColor = articles.count == 0 ? FHColor.label.secondary : FHColor.readColor
             subtitleString = String(articles.count) + " " + NSLocalizedString("UNREAD", comment: "Unread Articles")
-        } else if let group = object as? Group, let articles = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "publisher IN %@ AND read = %@", argumentArray: [group.feeds ?? NSSet(), false])) as? [Article] {
+        } else if let group = object as? Group, let articles = CoreDataManager.fetch(
+            entity: "Article", with: NSPredicate(format: "publisher IN %@ AND read = %@",
+                                                 argumentArray: [group.feeds ?? NSSet(), false])
+        ) as? [Article] {
             cell.detailTextLabel?.textColor = articles.count == 0 ? FHColor.label.secondary : FHColor.readColor
             subtitleString = String(articles.count) + " " + NSLocalizedString("UNREAD", comment: "Unread Articles")
         } else {
@@ -181,33 +187,33 @@ class FeedsTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     // MARK: - Fetched results controller
 
     var fetchedResultsController: NSFetchedResultsController<AbstractFeed>? {
-        if _fetchedResultsController != nil, _fetchedResultsController?.managedObjectContext == CoreDataService.shared.viewContext {
-            return _fetchedResultsController!
+        if internalFetchedResultsController != nil,
+            internalFetchedResultsController?.managedObjectContext == CoreDataService.shared.viewContext {
+            return internalFetchedResultsController!
         }
 
         let context = CoreDataService.shared.viewContext
 
         let fetchRequest = NSFetchRequest<AbstractFeed>(entityName: "AbstractFeed")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true), NSSortDescriptor(key: "title", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true),
+                                        NSSortDescriptor(key: "title", ascending: true)]
 
-        // Edit the section name key path and cache name if appropriate.
-        // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: "Master")
+        let aFetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: "Master"
+        )
         aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
+        internalFetchedResultsController = aFetchedResultsController
 
         do {
-            try _fetchedResultsController!.performFetch()
+            try internalFetchedResultsController!.performFetch()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        return _fetchedResultsController!
+        return internalFetchedResultsController!
     }
 
-    var _fetchedResultsController: NSFetchedResultsController<AbstractFeed>?
+    var internalFetchedResultsController: NSFetchedResultsController<AbstractFeed>?
 
     var itemToScrollTo: IndexPath?
 
@@ -215,7 +221,9 @@ class FeedsTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         tableView.beginUpdates()
     }
 
-    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(_: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any, at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)

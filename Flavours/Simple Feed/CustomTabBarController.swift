@@ -37,7 +37,8 @@ class CustomTabBarController: UITabBarController {
         settingsNavigationController.title = NSLocalizedString("SETTINGS", comment: "Settings")
         settingsNavigationController.tabBarItem.image = UIImage(named: "settingsSelected")
 
-        viewControllers = [feedNavigationController, taggedNavigationController, sectionsNavigationController, readNavigationController, settingsNavigationController]
+        viewControllers = [feedNavigationController, taggedNavigationController,
+                           sectionsNavigationController, readNavigationController, settingsNavigationController]
 
         tabBar.isTranslucent = false
 

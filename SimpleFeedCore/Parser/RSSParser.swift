@@ -73,16 +73,21 @@ public class RSSParser: NSObject, XMLParserDelegate {
 
     public func parserDidStartDocument(_: XMLParser) {}
 
-    public func parser(_: XMLParser, didStartElement elementName: String, namespaceURI _: String?, qualifiedName _: String?, attributes attributeDict: [String: String] = [:]) {
+    public func parser(_: XMLParser, didStartElement elementName: String,
+                       namespaceURI _: String?, qualifiedName _: String?, attributes attributeDict: [String: String] = [:]) {
         currentText = ""
         currentPath = currentPath + "/"
         currentPath = currentPath + elementName
         currentElementAttributes = attributeDict as NSDictionary
 
         if response.feedType == .unknown {
-            if elementName == "rss" { response.feedType = .RSS }
-            else if elementName == "rdf:RDF" { response.feedType = .RSS1 }
-            else if elementName == "feed" { response.feedType = .atom }
+            if elementName == "rss" {
+                response.feedType = .RSS
+            } else if elementName == "rdf:RDF" {
+                response.feedType = .RSS1
+            } else if elementName == "feed" {
+                response.feedType = .atom
+            }
         }
 
         if currentPath == "/rss/channel/item" || currentPath == "/rdf:RDF/item" || currentPath == "/feed/entry" {

@@ -7,23 +7,23 @@ import UIKit
 
 class Constants: NSObject {}
 
-public struct userDefaults {
-    public static let DELETE_ARTICLE_AFTER_DAYS = "DELETE_ARTICLE_AFTER_DAYS"
-    public static let ACTIVATE_READER_AUTO = "autoActivateReader"
-    public static let FIRST_START = "firstStart"
-    public static let ICLOUD_ENABLED = "ICLOUD_ENABLED"
-    public static let KEEP_LAST_READ = "KEEP_LAST_READ"
-    public static let CLEARED_DATABASE = "CLEARED_DATABASE"
+public struct SFUserDefaults {
+    public static let deleteArticleAfterDays = "DELETE_ARTICLE_AFTER_DAYS"
+    public static let autoActivateReader = "autoActivateReader"
+    public static let firstStart = "firstStart"
+    public static let icloudEnabled = "ICLOUD_ENABLED"
+    public static let keepLastRead = "KEEP_LAST_READ"
+    public static let clearedDataBase = "CLEARED_DATABASE"
 
-    public static let IMAGE_LOADING = "IMAGE_LOADING"
+    public static let imageLoading = "IMAGE_LOADING"
     public struct ImageLoading {
         public static let always = 1
         public static let onWifi = 2
         public static let never = 3
     }
 
-    public static let TITLE_LINES = "TITLE_LINES"
-    public static let PREVIEW_LINES = "PREVIEW_LINES"
-    public static let FEEDS_VIEW = "feedsView"
-    public static let GROUP_NEWS_FEED_BY_FEED = "GROUP_NEWS_FEED_BY_FEED"
+    public static let titleLines = "TITLE_LINES"
+    public static let previewLines = "PREVIEW_LINES"
+    public static let feedsView = "feedsView"
+    public static let groupNewsFeedByFeed = "GROUP_NEWS_FEED_BY_FEED"
 }
