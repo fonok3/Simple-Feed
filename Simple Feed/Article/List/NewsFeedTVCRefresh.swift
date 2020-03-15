@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -7,11 +7,7 @@ import CoreData
 import SimpleFeedCore
 import UIKit
 
-extension NewsFeedTVC: RSSParserDelegate {
-    func RSSParserError(_: RSSParser, error: String) {
-        print(error)
-    }
-
+extension NewsFeedTVC {
     @objc func refresh(_ sender: UIRefreshControl) {
         DispatchQueue.main.async {
             self.refreshHeaderView()

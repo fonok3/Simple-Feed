@@ -1,12 +1,12 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
 import CoreData
 import UIKit
 
-public class FetchManager: NSObject, RSSParserDelegate {
+public class FetchManager: NSObject {
     public static let shared = FetchManager()
 
     private override init() {
@@ -15,11 +15,7 @@ public class FetchManager: NSObject, RSSParserDelegate {
 
     private var fetching = false
 
-    public func RSSParserError(_: RSSParser, error: String) {
-        print(error)
-    }
-
-    public func fetch(_ abstractFeed: AbstractFeed, completion: (() -> Void)? = nil) {
+    public func fetch(_ abstractFeed: AbstractFeed, completion: @escaping ((Bool) -> Void) = { _ in }) {
         if let feed = abstractFeed as? Feed {
             fetchFeed(feed, completion: completion)
         } else if let group = abstractFeed as? Group {
@@ -40,7 +36,7 @@ public class FetchManager: NSObject, RSSParserDelegate {
         let numberOfFeeds = feeds.count
         var numberOfFetchedFeeds = 0
         for feed in feeds {
-            fetchFeed(feed, completion: {
+            fetchFeed(feed, completion: { _ in
                 numberOfFetchedFeeds += 1
                 if numberOfFetchedFeeds >= numberOfFeeds {
                     self.fetching = false
@@ -54,47 +50,42 @@ public class FetchManager: NSObject, RSSParserDelegate {
         }
     }
 
-    private func fetchFeed(_ feed: Feed, completion: (() -> Void)?) {
+    private func fetchFeed(_ feed: Feed, completion: ((Bool) -> Void)?) {
         let lastUpdated: Date = Date().adding(days: -UserDefaults.standard.integer(forKey: userDefaults.DELETE_ARTICLE_AFTER_DAYS))
         let url = URL(string: feed.link)!
         let parser = RSSParser(url: url)
-        parser.delegate = self
-        parser.parse { finished in
-            if finished {
+        parser.parse { result in
+            switch result {
+            case let .success(response):
                 CoreDataService.shared.performBackgroundTask(task: { context in
-
-                    print(url.absoluteString)
-
-                    for item in parser.items {
+                    for item in response.articles {
                         guard let realFeed = context.object(with: feed.objectID) as? Feed else { return }
 
                         if realFeed.title == "" {
-                            realFeed.title = parser.feedInfo.title
+                            realFeed.title = response.feedInfo.title
                             realFeed.lastEdited = Date()
                         }
                         realFeed.lastUpdated = Date()
-                        realFeed.imageUrl = parser.feedInfo.imageUrl
+                        realFeed.imageUrl = response.feedInfo.imageUrl
 
                         if item.date.compare(lastUpdated) == .orderedDescending || item.date <= Date(timeIntervalSince1970: 0) {
-                            if item.content != "" {
-                                item.summary = item.content
-                            }
-
-                            if item.summary != "" {
-                                let imageParser = HTMLParser(text: item.summary)
+                            let summary = !item.content.isEmpty ? item.content : item.summary
+                            if summary != "" {
+                                let imageParser = HTMLParser(text: summary)
                                 imageParser.parse {
-                                    item.titleImage = imageParser.firstImageURL
-                                    self.saveFeedItemToCoreData(item, feed: realFeed)
+                                    let url = imageParser.firstImageURL
+                                    self.saveFeedItemToCoreData(item, feed: realFeed, image: url)
                                 }
-
                             } else {
                                 self.saveFeedItemToCoreData(item, feed: realFeed)
                             }
                         }
                     }
+                    completion?(true)
                 })
+            case .failure:
+                completion?(false)
             }
-            completion?()
         }
     }
 
@@ -102,7 +93,7 @@ public class FetchManager: NSObject, RSSParserDelegate {
         completion?()
     }
 
-    func saveFeedItemToCoreData(_ item: FeedItem, feed: Feed, context: NSManagedObjectContext = CoreDataService.shared.viewContext) {
+    func saveFeedItemToCoreData(_ item: FeedArticle, feed: Feed, image: String? = nil, context: NSManagedObjectContext = CoreDataService.shared.viewContext) {
         let (article, isNewArticle) = Article.getArticle(with: item.link, and: item.title, in: context)
         let itemDate = item.date > Date(timeIntervalSince1970: 0) ? item.date : Date()
 
@@ -112,11 +103,11 @@ public class FetchManager: NSObject, RSSParserDelegate {
 
         if article.summary != item.summary
             || article.title != article.title
-            || article.titleImageUrl != item.titleImage {
+            || article.titleImageUrl != item.imageUrl {
             article.date = itemDate
             article.lastEdited = Date()
             article.summary = item.summary
-            article.titleImageUrl = item.titleImage
+            article.titleImageUrl = image ?? item.imageUrl
         }
 
         if feed.managedObjectContext == article.managedObjectContext {

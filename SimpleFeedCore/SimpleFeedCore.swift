@@ -1,6 +1,6 @@
 //
-//  Created by Florian Herzog on 02.03.20.
-//  Copyright © 2020 Florian Herzog. All rights reserved.
+// Simple Feed
+// Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
 import Foundation

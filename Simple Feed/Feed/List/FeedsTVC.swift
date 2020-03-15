@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -161,10 +161,10 @@ class FeedsTVC: UITableViewController, NSFetchedResultsControllerDelegate {
 
         if let feed = object as? Feed, let articles = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "publisher.link = %@ AND read = %@", argumentArray: [feed.link, false])) as? [Article] {
             cell.detailTextLabel?.textColor = articles.count == 0 ? FHColor.label.secondary : FHColor.readColor
-            subtitleString =  String(articles.count) +  " " + NSLocalizedString("UNREAD", comment: "Unread Articles")
+            subtitleString = String(articles.count) + " " + NSLocalizedString("UNREAD", comment: "Unread Articles")
         } else if let group = object as? Group, let articles = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "publisher IN %@ AND read = %@", argumentArray: [group.feeds ?? NSSet(), false])) as? [Article] {
             cell.detailTextLabel?.textColor = articles.count == 0 ? FHColor.label.secondary : FHColor.readColor
-            subtitleString =  String(articles.count) +  " " + NSLocalizedString("UNREAD", comment: "Unread Articles")
+            subtitleString = String(articles.count) + " " + NSLocalizedString("UNREAD", comment: "Unread Articles")
         } else {
             cell.detailTextLabel?.textColor = FHColor.readColor
             subtitleString = NSLocalizedString("NO_UNREAD_ARTICLES", comment: "No unread Articles")
@@ -176,7 +176,6 @@ class FeedsTVC: UITableViewController, NSFetchedResultsControllerDelegate {
             )
         }
         cell.detailTextLabel?.text = subtitleString
-
     }
 
     // MARK: - Fetched results controller

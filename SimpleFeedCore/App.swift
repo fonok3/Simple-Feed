@@ -1,9 +1,6 @@
 //
-//  App.swift
-//  SimpleFeedCore
-//
-//  Created by Florian Herzog on 02.03.20.
-//  Copyright © 2020 Florian Herzog. All rights reserved.
+// Simple Feed
+// Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
 import Foundation
@@ -31,6 +28,7 @@ public enum App {
     }
 
     // MARK: - Persistence
+
     enum Persistence {
         static let modelName = "Simple_Feed"
 

@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -107,7 +107,7 @@ public class SearchFeedTableViewController: UITableViewController {
         case .results:
             return searchResults.count
         case .manual:
-            guard let query = searchController.searchBar.text, !query.isEmpty, URL(string: query) != nil else {
+            guard !(searchController.searchBar.text ?? "").isEmpty else {
                 return 0
             }
             return 1
@@ -152,9 +152,9 @@ public class SearchFeedTableViewController: UITableViewController {
         case .info:
             return nil
         case .results:
-            return searchResults.count == 0 ? nil : NSLocalizedString("RESULTS", comment: "Results")
+            return searchResults.count == 0 ? nil : NSLocalizedString("SUGGESTIONS", comment: "Suggestions")
         case .manual:
-            guard let query = searchController.searchBar.text, !query.isEmpty, URL(string: query) != nil else {
+            guard !(searchController.searchBar.text ?? "").isEmpty else {
                 return nil
             }
             return NSLocalizedString("ADD_MANUALLY", comment: "Add Feed manually")
@@ -168,7 +168,7 @@ public class SearchFeedTableViewController: UITableViewController {
         case .results:
             return searchResults[indexPath.row].isAdded ? .delete : .insert
         case .manual:
-            return Feed.exists(with: searchController.searchBar.text) ? .delete: .insert
+            return Feed.exists(with: searchController.searchBar.text) ? .delete : .insert
         }
     }
 
@@ -179,20 +179,49 @@ public class SearchFeedTableViewController: UITableViewController {
             case .info:
                 break
             case .manual:
-                break
-//                add(feed: <#T##FeedlyFeedResponse#>)
+                guard let query = searchController.searchBar.text, let url = URL(string: query) else {
+                    self.showErrorAlert()
+                    return
+                }
+                let parser = RSSParser(url: url)
+                parser.parse { result in
+                    switch result {
+                    case let .success(response):
+                        let feed = response.feedInfo
+                        self.add(feed: FeedlyFeedResponse(feedId: "feed/" + query, id: "feed/" + query, title: feed.title))
+                        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    case .failure:
+                        self.showErrorAlert()
+                    }
+                }
             case .results:
                 add(feed: searchResults[indexPath.row])
             }
-
             tableView.reloadRows(at: [indexPath], with: .automatic)
         case .delete:
-            remove(feed: searchResults[indexPath.row])
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            switch Sections(rawValue: indexPath.section)! {
+            case .info:
+                break
+            case .manual:
+                guard let query = searchController.searchBar.text else { return }
+                remove(feed: FeedlyFeedResponse(feedId: "feed/" + query, id: "feed/" + query))
+            case .results:
+                remove(feed: searchResults[indexPath.row])
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
         case .none:
             break
         @unknown default:
             fatalError()
+        }
+    }
+
+    private func showErrorAlert() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: NSLocalizedString("NO_VALID_URL", comment: "No valid URL"), message: NSLocalizedString("NO_VALID_URL_MESSAGE", comment: "No valid URL Message"), preferredStyle: .alert)
+            let action = UIAlertAction(title: NSLocalizedString("OKAY", comment: "Okay"), style: .default, handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 

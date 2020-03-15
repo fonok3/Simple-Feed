@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -22,7 +22,6 @@ class FHSafariController: SFSafariViewController {
 
         preferredBarTintColor = FHColor.simpleFeedColor
         preferredControlTintColor = .white
-
     }
 
     lazy var previewActions: [UIPreviewActionItem] = {

@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -40,7 +40,7 @@ class NewsFeedTVCFeed: NewsFeedTVC {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 }
                 AppDelegate.shareAppDelegate().refreshStatus = .refreshSingleFeed
-                FetchManager.shared.fetch(self.feed) {
+                FetchManager.shared.fetch(self.feed) { _ in
                     AppDelegate.shareAppDelegate().refreshStatus = .nothing
                     DispatchQueue.main.async {
                         sender.endRefreshing()

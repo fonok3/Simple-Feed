@@ -1,63 +1,72 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
+import FHNetworking
 import UIKit
 
-public protocol RSSParserDelegate {
-    func RSSParserError(_ parser: RSSParser, error: String)
+public struct RSSResponse: Codable {
+    var feedType: FeedType = .unknown
+    var feedInfo: FeedInfo = FeedInfo()
+    var articles: [FeedArticle] = [FeedArticle]()
 }
 
-enum FeedType { case feedTypeUnknown, feedTypeRSS, feedTypeRSS1, feedTypeAtom }
+public enum FeedType: Int, Codable {
+    case unknown, RSS, RSS1, atom
+}
+
+public enum RSSError: Error {
+    case network(FHNetworkError?)
+    case parsing(Error?)
+    case cancelled
+}
 
 public class RSSParser: NSObject, XMLParserDelegate {
-    let url: URL
-    var delegate: RSSParserDelegate?
+    private let url: URL
 
-    var feedType: FeedType = FeedType.feedTypeUnknown
+    private var response = RSSResponse()
 
-    var items = [FeedItem]()
-    var item = FeedItem()
-    var currentPath = String()
-    var feedInfo = FeedInfo()
-    var currentText = String()
-    var currentElementAttributes = NSDictionary()
+    private var processingArticle = FeedArticle()
+    private var currentPath = ""
+    private var currentText = ""
+    private var currentElementAttributes = NSDictionary()
 
-    var formatter: DateFormatter?
+    private var completion: ((Result<RSSResponse, RSSError>) -> Void) = { _ in }
 
-    var handler: ((Bool) -> Void)?
+    private var xmlParser: XMLParser? {
+        didSet {
+            xmlParser?.delegate = self
+        }
+    }
+
+    private var currentTask: URLSessionTask?
 
     init(url: URL) {
         self.url = url
-        currentText = ""
-        formatter = DateFormatter()
-        formatter!.dateStyle = .short
-        formatter!.timeStyle = .short
     }
 
     func deleteObjects() {
-        items.removeAll()
-        feedInfo = FeedInfo()
+        currentTask?.cancel()
+        currentTask = nil
+        xmlParser?.abortParsing()
+        xmlParser = nil
         currentPath = ""
-        handler = nil
+        currentText = ""
+        response = RSSResponse()
+        completion(.failure(.cancelled))
+        completion = { _ in }
     }
 
-    func parse(_ handler: @escaping (Bool) -> Void) {
-        self.handler = handler
-        DispatchQueue.global().async {
+    func parse(_ completion: @escaping (Result<RSSResponse, RSSError>) -> Void = { _ in }) {
+        deleteObjects()
+        self.completion = completion
+        DispatchQueue.global(qos: .utility).async {
             if let xmlCode = try? Data(contentsOf: self.url) {
-                let parser = Foundation.XMLParser(data: xmlCode)
-                parser.delegate = self
-
-                if parser.parse() {}
-
+                self.xmlParser = Foundation.XMLParser(data: xmlCode)
+                _ = self.xmlParser?.parse()
             } else {
-                let error = "Could not load feed: " + String(describing: self.url)
-                self.delegate?.RSSParserError(self, error: error)
-                if self.handler != nil {
-                    self.handler!(false)
-                }
+                completion(.failure(.network(nil)))
             }
         }
     }
@@ -70,14 +79,14 @@ public class RSSParser: NSObject, XMLParserDelegate {
         currentPath = currentPath + elementName
         currentElementAttributes = attributeDict as NSDictionary
 
-        if feedType == FeedType.feedTypeUnknown {
-            if elementName == "rss" { feedType = FeedType.feedTypeRSS }
-            else if elementName == "rdf:RDF" { feedType = FeedType.feedTypeRSS1 }
-            else if elementName == "feed" { feedType = FeedType.feedTypeAtom }
+        if response.feedType == .unknown {
+            if elementName == "rss" { response.feedType = .RSS }
+            else if elementName == "rdf:RDF" { response.feedType = .RSS1 }
+            else if elementName == "feed" { response.feedType = .atom }
         }
 
         if currentPath == "/rss/channel/item" || currentPath == "/rdf:RDF/item" || currentPath == "/feed/entry" {
-            item = FeedItem()
+            processingArticle = FeedArticle()
         }
     }
 
@@ -90,115 +99,114 @@ public class RSSParser: NSObject, XMLParserDelegate {
 
         var processed = false
 
-        switch feedType {
-        case .feedTypeRSS:
+        switch response.feedType {
+        case .RSS:
             if !processed {
                 switch currentPath {
                 case "/rss/channel/item/title":
-                    item.title = currentText
+                    processingArticle.title = currentText
                     processed = true
                 case "/rss/channel/item/link":
-                    item.link = currentText
+                    processingArticle.link = currentText
                     processed = true
                 case "/rss/channel/item/pubDate":
-                    item.date = Date.dateFromRFC822(string: currentText) ?? Date()
+                    processingArticle.date = Date.dateFromRFC822(string: currentText) ?? Date()
                     processed = true
                 case "/rss/channel/item/description":
-                    item.summary = currentText
+                    processingArticle.summary = currentText
                     processed = true
                 case "/rss/channel/item/content":
-                    item.content = currentText
+                    processingArticle.content = currentText
                     processed = true
                 case "/rss/channel/item/content:encoded":
-                    item.content = currentText
+                    processingArticle.content = currentText
                     processed = true
                 case "/rss/channel/title":
-                    feedInfo.title = currentText
+                    response.feedInfo.title = currentText
                     processed = true
                 case "/rss/channel/description":
-                    feedInfo.feedDescription = currentText
+                    response.feedInfo.feedDescription = currentText
                     processed = true
                 case "/rss/channel/link":
-                    feedInfo.link = currentText
+                    response.feedInfo.link = currentText
                     processed = true
                 case "/rss/channel/image/url":
-                    feedInfo.imageUrl = currentText
+                    response.feedInfo.imageUrl = currentText
                     processed = true
                 default:
                     break
                 }
             }
             if !processed, elementName == "item" {
-                items.append(item)
+                response.articles.append(processingArticle)
             }
-        case .feedTypeRSS1:
-
+        case .RSS1:
             if !processed {
                 switch currentPath {
                 case "/rdf:RDF/item/title":
-                    item.title = currentText
+                    processingArticle.title = currentText
                     processed = true
                 case "/rdf:RDF/item/link":
-                    item.link = currentText
+                    processingArticle.link = currentText
                     processed = true
                 case "/rdf:RDF/item/description":
-                    item.summary = currentText
+                    processingArticle.summary = currentText
                     processed = true
                 case "/rdf:RDF/item/content:encoded":
-                    item.content = currentText
+                    processingArticle.content = currentText
                     processed = true
                 case "/rdf:RDF/item/dc:date":
-                    item.date = Date.dateFromRFC3339(string: currentText) ?? Date()
+                    processingArticle.date = Date.dateFromRFC3339(string: currentText) ?? Date()
                     processed = true
                 case "/rdf:RDF/channel/title":
-                    feedInfo.title = currentText
+                    response.feedInfo.title = currentText
                     processed = true
                 case "/rdf:RDF/channel/description":
-                    feedInfo.feedDescription = currentText
+                    response.feedInfo.feedDescription = currentText
                     processed = true
                 case "/rdf:RDF/channel/link":
-                    feedInfo.link = currentText
+                    response.feedInfo.link = currentText
                     processed = true
                 default:
                     break
                 }
             }
             if !processed, elementName == "item" {
-                items.append(item)
+                response.articles.append(processingArticle)
             }
-        case .feedTypeAtom:
+        case .atom:
             if !processed {
                 switch currentPath {
                 case "/feed/entry/title":
-                    item.title = currentText
+                    processingArticle.title = currentText
                     processed = true
                 case "/feed/entry/link":
-                    item.link = ((currentElementAttributes.object(forKey: "href") as AnyObject).description)!
+                    processingArticle.link = ((currentElementAttributes.object(forKey: "href") as AnyObject).description)!
                     processed = true
                 case "/feed/entry/summary":
-                    item.summary = currentText
+                    processingArticle.summary = currentText
                     processed = true
                 case "/feed/entry/content":
-                    item.content = currentText
+                    processingArticle.content = currentText
                     processed = true
                 case "/feed/entry/published":
-                    item.date = Date.dateFromRFC3339(string: currentText) ?? Date()
+                    processingArticle.date = Date.dateFromRFC3339(string: currentText) ?? Date()
                     processed = true
                 case "/feed/title":
-                    feedInfo.title = currentText
+                    response.feedInfo.title = currentText
                     processed = true
                 case "/feed/description":
-                    feedInfo.feedDescription = currentText
+                    response.feedInfo.feedDescription = currentText
                     processed = true
                 case "/feed/link":
-                    feedInfo.link = currentText
+                    response.feedInfo.link = currentText
                     processed = true
                 default:
                     break
                 }
             }
             if !processed, elementName == "entry" {
-                items.append(item)
+                response.articles.append(processingArticle)
             }
         default:
             break
@@ -211,15 +219,14 @@ public class RSSParser: NSObject, XMLParserDelegate {
     }
 
     public func parser(_: XMLParser, parseErrorOccurred parseError: Error) {
-        delegate?.RSSParserError(self, error: parseError.localizedDescription)
         DispatchQueue.main.async {
-            self.handler?(false)
+            self.completion(.failure(.parsing(parseError)))
         }
     }
 
     public func parserDidEndDocument(_: XMLParser) {
         DispatchQueue.main.async {
-            self.handler?(true)
+            self.completion(.success(self.response))
         }
     }
 }
