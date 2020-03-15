@@ -107,7 +107,7 @@ public class SearchFeedTableViewController: UITableViewController {
         case .results:
             return searchResults.count
         case .manual:
-            guard let query = searchController.searchBar.text, !query.isEmpty, URL(string: query) != nil else {
+            guard !(searchController.searchBar.text ?? "").isEmpty else {
                 return 0
             }
             return 1
@@ -154,7 +154,7 @@ public class SearchFeedTableViewController: UITableViewController {
         case .results:
             return searchResults.count == 0 ? nil : NSLocalizedString("SUGGESTIONS", comment: "Suggestions")
         case .manual:
-            guard let query = searchController.searchBar.text, !query.isEmpty, URL(string: query) != nil else {
+            guard !(searchController.searchBar.text ?? "").isEmpty else {
                 return nil
             }
             return NSLocalizedString("ADD_MANUALLY", comment: "Add Feed manually")
@@ -180,6 +180,7 @@ public class SearchFeedTableViewController: UITableViewController {
                 break
             case .manual:
                 guard let query = searchController.searchBar.text, let url = URL(string: query) else {
+                    self.showErrorAlert()
                     return
                 }
                 let parser = RSSParser(url: url)
@@ -190,13 +191,12 @@ public class SearchFeedTableViewController: UITableViewController {
                         self.add(feed: FeedlyFeedResponse(feedId: "feed/" + query, id: "feed/" + query, title: feed.title))
                         self.tableView.reloadRows(at: [indexPath], with: .automatic)
                     case .failure:
-                        break
+                        self.showErrorAlert()
                     }
                 }
             case .results:
                 add(feed: searchResults[indexPath.row])
             }
-
             tableView.reloadRows(at: [indexPath], with: .automatic)
         case .delete:
             switch Sections(rawValue: indexPath.section)! {
@@ -213,6 +213,15 @@ public class SearchFeedTableViewController: UITableViewController {
             break
         @unknown default:
             fatalError()
+        }
+    }
+
+    private func showErrorAlert() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: NSLocalizedString("NO_VALID_URL", comment: "No valid URL"), message: NSLocalizedString("NO_VALID_URL_MESSAGE", comment: "No valid URL Message"), preferredStyle: .alert)
+            let action = UIAlertAction(title: NSLocalizedString("OKAY", comment: "Okay"), style: .default, handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 
