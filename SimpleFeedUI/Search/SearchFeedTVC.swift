@@ -152,7 +152,7 @@ public class SearchFeedTableViewController: UITableViewController {
         case .info:
             return nil
         case .results:
-            return searchResults.count == 0 ? nil : NSLocalizedString("RESULTS", comment: "Results")
+            return searchResults.count == 0 ? nil : NSLocalizedString("SUGGESTIONS", comment: "Suggestions")
         case .manual:
             guard let query = searchController.searchBar.text, !query.isEmpty, URL(string: query) != nil else {
                 return nil
@@ -179,16 +179,37 @@ public class SearchFeedTableViewController: UITableViewController {
             case .info:
                 break
             case .manual:
-                break
-//                add(feed: <#T##FeedlyFeedResponse#>)
+                guard let query = searchController.searchBar.text, let url = URL(string: query) else {
+                    return
+                }
+                let parser = RSSParser(url: url)
+                parser.parse { (result) in
+                    switch result {
+                    case let .success(response):
+                        let feed = response.feedInfo
+                        self.add(feed: FeedlyFeedResponse(feedId: "feed/" + query, id: "feed/" + query, title: feed.title))
+                        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    case .failure:
+                        break
+                    }
+
+                }
             case .results:
                 add(feed: searchResults[indexPath.row])
             }
 
             tableView.reloadRows(at: [indexPath], with: .automatic)
         case .delete:
-            remove(feed: searchResults[indexPath.row])
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            switch Sections(rawValue: indexPath.section)! {
+            case .info:
+                break
+            case .manual:
+                guard let query = searchController.searchBar.text else { return }
+                remove(feed: FeedlyFeedResponse(feedId: "feed/" + query, id: "feed/" + query))
+            case .results:
+                remove(feed: searchResults[indexPath.row])
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
         case .none:
             break
         @unknown default:
