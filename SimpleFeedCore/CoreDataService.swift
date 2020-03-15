@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -13,6 +13,7 @@ public final class CoreDataService: NSObject {
     private let kind: Kinds
 
     // MARK: - Creating a Container
+
     init(modelUrl: URL, kind: Kinds) {
         self.modelUrl = modelUrl
         self.kind = kind
@@ -62,7 +63,7 @@ public final class CoreDataService: NSObject {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         let store = try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: sourceUrl, options: [
             NSMigratePersistentStoresAutomaticallyOption: true,
-            NSInferMappingModelAutomaticallyOption: true,
+            NSInferMappingModelAutomaticallyOption: true
         ])
         try coordinator.migratePersistentStore(store, to: destinationUrl, options: nil, withType: NSSQLiteStoreType)
     }

@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -168,7 +168,7 @@ public class SearchFeedTableViewController: UITableViewController {
         case .results:
             return searchResults[indexPath.row].isAdded ? .delete : .insert
         case .manual:
-            return Feed.exists(with: searchController.searchBar.text) ? .delete: .insert
+            return Feed.exists(with: searchController.searchBar.text) ? .delete : .insert
         }
     }
 
@@ -183,7 +183,7 @@ public class SearchFeedTableViewController: UITableViewController {
                     return
                 }
                 let parser = RSSParser(url: url)
-                parser.parse { (result) in
+                parser.parse { result in
                     switch result {
                     case let .success(response):
                         let feed = response.feedInfo
@@ -192,7 +192,6 @@ public class SearchFeedTableViewController: UITableViewController {
                     case .failure:
                         break
                     }
-
                 }
             case .results:
                 add(feed: searchResults[indexPath.row])

@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -55,12 +55,12 @@ public class CoreDataManager: NSObject {
         }
 
         articles.forEach { $0.setRead() }
-        
+
         saveContext {
             completion?(articles)
         }
     }
-    
+
     public static func saveContext(completion: (() -> Void)? = nil) {
         let context = CoreDataService.shared.viewContext
         if context.hasChanges {

@@ -1,5 +1,5 @@
 //
-// Stud.IP Connect
+// Simple Feed
 // Copyright © 2020 Florian Herzog. All rights reserved.
 //
 
@@ -54,7 +54,7 @@ public class FetchManager: NSObject {
         let lastUpdated: Date = Date().adding(days: -UserDefaults.standard.integer(forKey: userDefaults.DELETE_ARTICLE_AFTER_DAYS))
         let url = URL(string: feed.link)!
         let parser = RSSParser(url: url)
-        parser.parse { (result) in
+        parser.parse { result in
             switch result {
             case let .success(response):
                 CoreDataService.shared.performBackgroundTask(task: { context in
