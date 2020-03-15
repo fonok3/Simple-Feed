@@ -66,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             entity: "Feed", with: NSPredicate(format: "link != %@", [""]),
             and: [NSSortDescriptor(key: "lastUpdated", ascending: false)]
         )
+        
         for object in objects {
             let shortcutItem = UIApplicationShortcutItem(type: (object as! Feed).title,
                                                          localizedTitle: (object as AnyObject).title,
