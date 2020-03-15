@@ -5,36 +5,18 @@
 
 import UIKit
 
-class FeedItem: NSObject {
-    var title: String
-    var link: String
-    var date: Date
-    var summary: String
-    var content: String
-    var publisher: FeedInfo
-    var titleImage: String
-
-    override init() {
-        title = ""
-        link = ""
-        date = Date(timeIntervalSince1970: 0)
-        summary = ""
-        content = ""
-        publisher = FeedInfo()
-        titleImage = ""
-    }
+struct FeedArticle: Codable {
+    var title: String = ""
+    var link: String = ""
+    var date: Date = Date(timeIntervalSince1970: 0)
+    var summary: String = ""
+    var content: String = ""
+    var imageUrl: String = ""
 }
 
-class FeedInfo: NSObject {
-    var title: String
-    var link: String
-    var feedDescription: String
-    var imageUrl: String
-
-    override init() {
-        title = ""
-        link = ""
-        feedDescription = ""
-        imageUrl = ""
-    }
+struct FeedInfo: Codable {
+    var title: String = ""
+    var link: String = ""
+    var feedDescription: String = ""
+    var imageUrl: String = ""
 }

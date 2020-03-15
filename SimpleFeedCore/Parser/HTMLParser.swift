@@ -12,7 +12,7 @@ protocol HTMLParserDelegate {
 class HTMLParser: NSObject, XMLParserDelegate {
     var delegate: HTMLParserDelegate?
 
-    var feedType: FeedType = FeedType.feedTypeUnknown
+    var feedType: FeedType = FeedType.unknown
 
     var currentElementAttributes = NSDictionary()
 
