@@ -208,6 +208,7 @@
 		6D0E47FD240D563200F15C73 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		6D0E47FF240D56DE00F15C73 /* SimpleFeedCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFeedCore.swift; sourceTree = "<group>"; };
 		6D0E480F240D8F3000F15C73 /* Article+Modifying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+Modifying.swift"; sourceTree = "<group>"; };
+		6D4818B7241E481B00454F91 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6D7FCED223C7161100E42D8E /* Date+RFC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+RFC.swift"; sourceTree = "<group>"; };
 		6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleFeedUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D811E4923C76C800041FB7C /* SimpleFeedUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleFeedUI.h; sourceTree = "<group>"; };
@@ -1188,6 +1189,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DDDC1D9E1CC016DD00926426 /* Base */,
+				6D4818B7241E481B00454F91 /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
