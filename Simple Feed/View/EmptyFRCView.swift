@@ -19,10 +19,10 @@ class EmptyFRCView: UIView {
     }
 
     private let imageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        iv.tintColor = FHColor.label.secondary
-        return iv
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = FHColor.label.secondary
+        return imageView
     }()
 
     private let titleLabel: UILabel = {
@@ -51,15 +51,22 @@ class EmptyFRCView: UIView {
         addSubview(subtitleLabel)
 
         addConstraintsWithFormat("V:[v0(45)]-16-[v1]-8-[v2]", views: imageView, titleLabel, subtitleLabel)
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal,
+                                         toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
 
-        addConstraint(NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .leftMargin, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .rightMargin, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal,
+                                         toItem: self, attribute: .leftMargin, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal,
+                                         toItem: self, attribute: .rightMargin, multiplier: 1, constant: 0))
 
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .leftMargin, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .rightMargin, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
+                                         toItem: self, attribute: .leftMargin, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
+                                         toItem: self, attribute: .rightMargin, multiplier: 1, constant: 0))
 
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .leftMargin, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .rightMargin, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal,
+                                         toItem: self, attribute: .leftMargin, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .right, relatedBy: .equal,
+                                         toItem: self, attribute: .rightMargin, multiplier: 1, constant: 0))
     }
 }

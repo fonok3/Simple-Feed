@@ -30,7 +30,6 @@
 		6D811E5923C76C800041FB7C /* SimpleFeedUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D811E4923C76C800041FB7C /* SimpleFeedUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D811E5C23C76C800041FB7C /* SimpleFeedUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */; };
 		6D811E5D23C76C800041FB7C /* SimpleFeedUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6D811E7323C76D410041FB7C /* Simple_Feed_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D811E7223C76D410041FB7C /* Simple_Feed_Tests.swift */; };
 		6D811E8823C76D660041FB7C /* SimpleFeedCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; };
 		6D811E8F23C76D660041FB7C /* SimpleFeedCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D811E8E23C76D660041FB7C /* SimpleFeedCoreTests.swift */; };
 		6D811E9123C76D660041FB7C /* SimpleFeedCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D811E8123C76D660041FB7C /* SimpleFeedCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -108,13 +107,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6D811E4623C76C800041FB7C;
 			remoteInfo = SimpleFeedUI;
-		};
-		6D811E7523C76D410041FB7C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DDDC1D841CC016DD00926426 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DDDC1D8B1CC016DD00926426;
-			remoteInfo = "Simple Feed";
 		};
 		6D811E8923C76D660041FB7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -216,9 +208,6 @@
 		6D811E4F23C76C800041FB7C /* SimpleFeedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleFeedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D811E5623C76C800041FB7C /* SimpleFeedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFeedUITests.swift; sourceTree = "<group>"; };
 		6D811E5823C76C800041FB7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D811E7023C76D410041FB7C /* Simple Feed Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple Feed Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D811E7223C76D410041FB7C /* Simple_Feed_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_Feed_Tests.swift; sourceTree = "<group>"; };
-		6D811E7423C76D410041FB7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleFeedCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D811E8123C76D660041FB7C /* SimpleFeedCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleFeedCore.h; sourceTree = "<group>"; };
 		6D811E8223C76D660041FB7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -284,13 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D811E5023C76C800041FB7C /* SimpleFeedUI.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D811E6D23C76D410041FB7C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,15 +484,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		6D811E7123C76D410041FB7C /* Simple Feed Tests */ = {
-			isa = PBXGroup;
-			children = (
-				6D811E7223C76D410041FB7C /* Simple_Feed_Tests.swift */,
-				6D811E7423C76D410041FB7C /* Info.plist */,
-			);
-			path = "Simple Feed Tests";
-			sourceTree = "<group>";
-		};
 		6D811E8023C76D660041FB7C /* SimpleFeedCore */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,7 +516,6 @@
 		6D811E9C23C76D7F0041FB7C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6D811E7123C76D410041FB7C /* Simple Feed Tests */,
 				6D811E5523C76C800041FB7C /* SimpleFeedUITests */,
 				6D811E8D23C76D660041FB7C /* SimpleFeedCoreTests */,
 			);
@@ -680,7 +652,6 @@
 				DDDC1D8C1CC016DD00926426 /* Simple Feed.app */,
 				6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */,
 				6D811E4F23C76C800041FB7C /* SimpleFeedUITests.xctest */,
-				6D811E7023C76D410041FB7C /* Simple Feed Tests.xctest */,
 				6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */,
 				6D811E8723C76D660041FB7C /* SimpleFeedCoreTests.xctest */,
 			);
@@ -762,24 +733,6 @@
 			productReference = 6D811E4F23C76C800041FB7C /* SimpleFeedUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6D811E6F23C76D410041FB7C /* Simple Feed Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6D811E7723C76D410041FB7C /* Build configuration list for PBXNativeTarget "Simple Feed Tests" */;
-			buildPhases = (
-				6D811E6C23C76D410041FB7C /* Sources */,
-				6D811E6D23C76D410041FB7C /* Frameworks */,
-				6D811E6E23C76D410041FB7C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6D811E7623C76D410041FB7C /* PBXTargetDependency */,
-			);
-			name = "Simple Feed Tests";
-			productName = "Simple Feed Tests";
-			productReference = 6D811E7023C76D410041FB7C /* Simple Feed Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		6D811E7E23C76D660041FB7C /* SimpleFeedCore */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D811E9623C76D660041FB7C /* Build configuration list for PBXNativeTarget "SimpleFeedCore" */;
@@ -831,6 +784,7 @@
 				D403ACBE5E6B71FFD5F40464 /* [CP] Embed Pods Frameworks */,
 				F481945A6A017D3EEBB281FD /* [CP] Copy Pods Resources */,
 				68B982DD1E453ABA00F2AD24 /* Embed Frameworks */,
+				6D4818BA241E550800454F91 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -859,10 +813,6 @@
 						CreatedOnToolsVersion = 11.3;
 					};
 					6D811E4E23C76C800041FB7C = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = DDDC1D8B1CC016DD00926426;
-					};
-					6D811E6F23C76D410041FB7C = {
 						CreatedOnToolsVersion = 11.3;
 						TestTargetID = DDDC1D8B1CC016DD00926426;
 					};
@@ -904,7 +854,6 @@
 			projectRoot = "";
 			targets = (
 				DDDC1D8B1CC016DD00926426 /* Simple Feed */,
-				6D811E6F23C76D410041FB7C /* Simple Feed Tests */,
 				6D811E4623C76C800041FB7C /* SimpleFeedUI */,
 				6D811E4E23C76C800041FB7C /* SimpleFeedUITests */,
 				6D811E7E23C76D660041FB7C /* SimpleFeedCore */,
@@ -922,13 +871,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6D811E4D23C76C800041FB7C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D811E6E23C76D410041FB7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -983,6 +925,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6D4818BA241E550800454F91 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		D403ACBE5E6B71FFD5F40464 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1031,14 +990,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D811E5723C76C800041FB7C /* SimpleFeedUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D811E6C23C76D410041FB7C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6D811E7323C76D410041FB7C /* Simple_Feed_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,11 +1089,6 @@
 			isa = PBXTargetDependency;
 			target = 6D811E4623C76C800041FB7C /* SimpleFeedUI */;
 			targetProxy = 6D811E5A23C76C800041FB7C /* PBXContainerItemProxy */;
-		};
-		6D811E7623C76D410041FB7C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DDDC1D8B1CC016DD00926426 /* Simple Feed */;
-			targetProxy = 6D811E7523C76D410041FB7C /* PBXContainerItemProxy */;
 		};
 		6D811E8A23C76D660041FB7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1322,64 +1268,6 @@
 				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Feed.app/Simple Feed";
-			};
-			name = Release;
-		};
-		6D811E7823C76D410041FB7C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C4YARYVL6H;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Simple Feed Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.Simple-Feed-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Feed.app/Simple Feed";
-			};
-			name = Debug;
-		};
-		6D811E7923C76D410041FB7C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C4YARYVL6H;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Simple Feed Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.Simple-Feed-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1709,15 +1597,6 @@
 			buildConfigurations = (
 				6D811E6223C76C800041FB7C /* Debug */,
 				6D811E6323C76C800041FB7C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6D811E7723C76D410041FB7C /* Build configuration list for PBXNativeTarget "Simple Feed Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6D811E7823C76D410041FB7C /* Debug */,
-				6D811E7923C76D410041FB7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

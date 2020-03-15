@@ -172,7 +172,8 @@ public class SearchFeedTableViewController: UITableViewController {
         }
     }
 
-    public override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    public override func tableView(_ tableView: UITableView,
+                                   commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .insert:
             switch Sections(rawValue: indexPath.section)! {
@@ -218,7 +219,10 @@ public class SearchFeedTableViewController: UITableViewController {
 
     private func showErrorAlert() {
         DispatchQueue.main.async {
-            let alertController = UIAlertController(title: NSLocalizedString("NO_VALID_URL", comment: "No valid URL"), message: NSLocalizedString("NO_VALID_URL_MESSAGE", comment: "No valid URL Message"), preferredStyle: .alert)
+            let alertController = UIAlertController(
+                title: NSLocalizedString("NO_VALID_URL", comment: "No valid URL"),
+                message: NSLocalizedString("NO_VALID_URL_MESSAGE", comment: "No valid URL Message"), preferredStyle: .alert
+            )
             let action = UIAlertAction(title: NSLocalizedString("OKAY", comment: "Okay"), style: .default, handler: nil)
             alertController.addAction(action)
             self.present(alertController, animated: true, completion: nil)

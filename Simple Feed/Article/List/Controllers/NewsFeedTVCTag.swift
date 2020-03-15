@@ -22,13 +22,18 @@ class NewsFeedTVCTag: NewsFeedTVC {
     }
 
     override func updateUnreadLabel() {
-        unreadLabel.text = String(fetchedResultsController!.fetchedObjects!.count) + " " + NSLocalizedString("TAGGED_ARTICLES", comment: "Tagged Articles")
+        unreadLabel.text = String(fetchedResultsController!.fetchedObjects!.count) + " "
+            + NSLocalizedString("TAGGED_ARTICLES", comment: "Tagged Articles")
     }
 
     @available(iOS 11.0, *)
-    override func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    override func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+        -> UISwipeActionsConfiguration? {
         if let obj = fetchedResultsController?.object(at: indexPath) {
-            let readAction = UIContextualAction(style: .destructive, title: NSLocalizedString(obj.tagged ? "UNTAG" : "TAG", comment: "tag")) { _, _, completionHandler in
+            let readAction = UIContextualAction(
+                style: .destructive,
+                title: NSLocalizedString(obj.tagged ? "UNTAG" : "TAG", comment: "tag")
+            ) { _, _, completionHandler in
                 completionHandler(true)
                 obj.changeTaggingStatus()
             }
@@ -42,9 +47,12 @@ class NewsFeedTVCTag: NewsFeedTVC {
     }
 
     @available(iOS 11.0, *)
-    override func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    override func tableView(_: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+        -> UISwipeActionsConfiguration? {
         if let obj = fetchedResultsController?.object(at: indexPath) {
-            let readAction = UIContextualAction(style: .normal, title: NSLocalizedString(obj.read ? "UNREAD" : "READ", comment: "read")) { _, _, completionHandler in
+            let readAction = UIContextualAction(
+                style: .normal, title: NSLocalizedString(obj.read ? "UNREAD" : "READ", comment: "read")
+            ) { _, _, completionHandler in
                 completionHandler(true)
                 obj.changeReadStatus()
             }

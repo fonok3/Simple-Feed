@@ -51,7 +51,7 @@ public class FetchManager: NSObject {
     }
 
     private func fetchFeed(_ feed: Feed, completion: ((Bool) -> Void)?) {
-        let lastUpdated: Date = Date().adding(days: -UserDefaults.standard.integer(forKey: userDefaults.DELETE_ARTICLE_AFTER_DAYS))
+        let lastUpdated: Date = Date().adding(days: -UserDefaults.standard.integer(forKey: SFUserDefaults.deleteArticleAfterDays))
         let url = URL(string: feed.link)!
         let parser = RSSParser(url: url)
         parser.parse { result in
@@ -93,7 +93,8 @@ public class FetchManager: NSObject {
         completion?()
     }
 
-    func saveFeedItemToCoreData(_ item: FeedArticle, feed: Feed, image: String? = nil, context: NSManagedObjectContext = CoreDataService.shared.viewContext) {
+    func saveFeedItemToCoreData(_ item: FeedArticle, feed: Feed, image: String? = nil,
+                                context: NSManagedObjectContext = CoreDataService.shared.viewContext) {
         let (article, isNewArticle) = Article.getArticle(with: item.link, and: item.title, in: context)
         let itemDate = item.date > Date(timeIntervalSince1970: 0) ? item.date : Date()
 

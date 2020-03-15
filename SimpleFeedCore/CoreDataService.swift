@@ -44,7 +44,9 @@ public final class CoreDataService: NSObject {
 
     // MARK: - Migrating the Persistent Store
 
-    private let applicationDocumentsStoreUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!.appendingPathComponent("SingleViewCoreData.sqlite")
+    private let applicationDocumentsStoreUrl
+        = FileManager.default.urls(for: .documentDirectory,
+                                   in: .userDomainMask).last!.appendingPathComponent("SingleViewCoreData.sqlite")
 
     private func migrateStoreIfNeeded() throws {
         let hasApplicationGroupStore = FileManager.default.fileExists(atPath: App.Persistence.storeUrl.path)

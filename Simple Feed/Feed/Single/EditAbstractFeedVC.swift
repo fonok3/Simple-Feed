@@ -7,7 +7,8 @@ import CoreData
 import SimpleFeedCore
 import UIKit
 
-class EditAbstractFeedVC<Element: AbstractFeed, SelectType: AbstractFeed>: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class EditAbstractFeedVC<Element: AbstractFeed, SelectType: AbstractFeed>: UIViewController, UITextFieldDelegate,
+    UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     var currentFeed: Element
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -104,39 +105,40 @@ class EditAbstractFeedVC<Element: AbstractFeed, SelectType: AbstractFeed>: UIVie
     // - NSFetchedResultsControllerDelegate
 
     var fetchedResultsController: NSFetchedResultsController<SelectType>? {
-        if _fetchedResultsController != nil, _fetchedResultsController?.managedObjectContext == CoreDataService.shared.viewContext {
-            return _fetchedResultsController!
+        if internalFetchedResultsController != nil,
+            internalFetchedResultsController?.managedObjectContext == CoreDataService.shared.viewContext {
+            return internalFetchedResultsController!
         }
 
         let context = CoreDataService.shared.viewContext
 
         let fetchRequest = NSFetchRequest<SelectType>(entityName: String(describing: SelectType.self))
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true), NSSortDescriptor(key: "title", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true),
+                                        NSSortDescriptor(key: "title", ascending: true)]
 
-        // Edit the section name key path and cache name if appropriate.
-        // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                   managedObjectContext: context,
+                                                                   sectionNameKeyPath: nil, cacheName: nil)
         aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
+        internalFetchedResultsController = aFetchedResultsController
 
         do {
-            try _fetchedResultsController!.performFetch()
+            try internalFetchedResultsController!.performFetch()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        return _fetchedResultsController!
+        return internalFetchedResultsController!
     }
 
-    var _fetchedResultsController: NSFetchedResultsController<SelectType>?
+    var internalFetchedResultsController: NSFetchedResultsController<SelectType>?
 
     func controllerWillChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
 
-    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange _: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange _: Any, at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
@@ -162,7 +164,8 @@ class EditAbstractFeedVC<Element: AbstractFeed, SelectType: AbstractFeed>: UIVie
         view.addConstraintsWithFormat("H:[v0(150)]", views: deleteButton)
         view.addConstraintsWithFormat("V:|-20-[v0(30)]", views: titleLabel)
         view.addConstraintsWithFormat("V:|-20-[v0(30)]-20-[v1]-30-[v2(30)]", views: titleTextField, urlTextField, deleteButton)
-        view.addConstraint(NSLayoutConstraint(item: deleteButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 1))
+        view.addConstraint(NSLayoutConstraint(item: deleteButton, attribute: .centerX,
+                                              relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 1))
         view.addSubview(tableViewDescriptionLabel)
         view.addSubview(tableView)
         view.addConstraintsWithFormat("V:[v0]-8-[v1]-8-[v2]-8-|", views: deleteButton, tableViewDescriptionLabel, tableView)

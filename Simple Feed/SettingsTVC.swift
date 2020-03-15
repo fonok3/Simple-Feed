@@ -13,7 +13,8 @@ class SettingsTVC: IASKAppSettingsViewController, IASKSettingsDelegate {
     }
 
     override func viewDidLoad() {
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingsTVC.settingDidChange(_:)), name: NSNotification.Name(rawValue: kIASKAppSettingChanged), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsTVC.settingDidChange(_:)),
+                                               name: NSNotification.Name(rawValue: kIASKAppSettingChanged), object: nil)
         showDoneButton = false
         neverShowPrivacySettings = true
         delegate = self
@@ -55,34 +56,11 @@ class SettingsTVC: IASKAppSettingsViewController, IASKSettingsDelegate {
             readNavigationController.tabBarItem.image = UIImage(named: "read")
             readNavigationController.tabBarItem.selectedImage = UIImage(named: "readSelected")
             tabBarController?.viewControllers![3] = readNavigationController
-        case userDefaults.KEEP_LAST_READ:
+        case SFUserDefaults.keepLastRead:
             let feedNavigationController = SFNavigationController(rootViewController: NewsFeedTVCUnread())
             feedNavigationController.tabBarItem.image = UIImage(named: "newsFeed")
             feedNavigationController.tabBarItem.selectedImage = UIImage(named: "Feed")
             tabBarController?.viewControllers![0] = feedNavigationController
-
-//        case userDefaults.ICLOUD_ENABLED:
-//            print("test")
-//            if UserDefaults.standard.bool(forKey: userDefaults.ICLOUD_ENABLED) {
-//                print("enabled")
-//                AppDelegate.shareAppDelegate().ubiquityStoreManager.setCloudEnabledAndOverwriteCloudWithLocalIfConfirmed({ (setConfirmationAnswer: ((Bool) -> Void)?) in
-//                    let alert = UIAlertController(title: NSLocalizedString("EXISTING_DATA", comment: "Existing Data"), message: NSLocalizedString("EXISTING_DATA_MESSAGE", comment: "Existing Data Message"), preferredStyle: .alert)
-//                    let myAction = UIAlertAction(title: NSLocalizedString("USE_LOCAL_DATA", comment: "User local Data"), style: .default) { _ in
-//                        setConfirmationAnswer!(true)
-//                    }
-//                    let theirsAction = UIAlertAction(title: NSLocalizedString("USE_CLOUD_DATA", comment: "User Cloud Data"), style: .default) { _ in
-//                        setConfirmationAnswer!(false)
-//                    }
-//                    alert.addAction(myAction)
-//                    alert.addAction(theirsAction)
-//                    self.present(alert, animated: true, completion: nil)
-//                })
-//                print(UserDefaults.standard.bool(forKey: USMCloudEnabledKey))
-//            } else {
-//                AppDelegate.shareAppDelegate().ubiquityStoreManager.setCloudDisabledAndOverwriteLocalWithCloudIfConfirmed({ (setConfirmationAnswer: ((Bool) -> Void)?) in
-//                    setConfirmationAnswer!(true)
-//                })
-//            }
         default:
             break
         }
@@ -94,7 +72,8 @@ class SettingsTVC: IASKAppSettingsViewController, IASKSettingsDelegate {
 
     func settingsViewController(_: IASKAppSettingsViewController!, buttonTappedFor _: IASKSpecifier!) {}
 
-    override func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith _: MFMailComposeResult, error _: Error!) {
+    override func mailComposeController(_ controller: MFMailComposeViewController,
+                                        didFinishWith _: MFMailComposeResult, error _: Error!) {
         controller.dismiss(animated: true, completion: nil)
     }
 }

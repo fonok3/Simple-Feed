@@ -34,16 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     func setAppDefaults() {
-        let appDefaults = [userDefaults.DELETE_ARTICLE_AFTER_DAYS: 2,
-                           userDefaults.ACTIVATE_READER_AUTO: true,
-                           userDefaults.FIRST_START: true,
-                           userDefaults.ICLOUD_ENABLED: false,
-                           userDefaults.IMAGE_LOADING: userDefaults.ImageLoading.always,
-                           userDefaults.KEEP_LAST_READ: true,
-                           userDefaults.CLEARED_DATABASE: false,
-                           userDefaults.TITLE_LINES: 2,
-                           userDefaults.PREVIEW_LINES: 3,
-                           userDefaults.GROUP_NEWS_FEED_BY_FEED: false] as [String: Any]
+        let appDefaults = [SFUserDefaults.deleteArticleAfterDays: 2,
+                           SFUserDefaults.autoActivateReader: true,
+                           SFUserDefaults.firstStart: true,
+                           SFUserDefaults.icloudEnabled: false,
+                           SFUserDefaults.imageLoading: SFUserDefaults.ImageLoading.always,
+                           SFUserDefaults.keepLastRead: true,
+                           SFUserDefaults.clearedDataBase: false,
+                           SFUserDefaults.titleLines: 2,
+                           SFUserDefaults.previewLines: 3,
+                           SFUserDefaults.groupNewsFeedByFeed: false] as [String: Any]
 
         UserDefaults.standard.register(defaults: appDefaults)
         UserDefaults.standard.synchronize()
@@ -62,16 +62,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func refreshShorcutItems(_ application: UIApplication) {
         application.shortcutItems = [UIApplicationShortcutItem]()
-        let objects = CoreDataManager.fetch(entity: "Feed", with: NSPredicate(format: "link != %@", [""]), and: [NSSortDescriptor(key: "lastUpdated", ascending: false)])
+        let objects = CoreDataManager.fetch(
+            entity: "Feed", with: NSPredicate(format: "link != %@", [""]),
+            and: [NSSortDescriptor(key: "lastUpdated", ascending: false)]
+        )
         for object in objects {
-            if #available(iOS 9.1, *) {
-                let shortcutItem = UIApplicationShortcutItem(type: (object as! Feed).title, localizedTitle: (object as AnyObject).title, localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "sectionsSelected"), userInfo: nil)
-                application.shortcutItems?.append(shortcutItem)
-            }
+            let shortcutItem = UIApplicationShortcutItem(type: (object as! Feed).title,
+                                                         localizedTitle: (object as AnyObject).title,
+                                                         localizedSubtitle: "",
+                                                         icon: UIApplicationShortcutIcon(templateImageName: "sectionsSelected"),
+                                                         userInfo: nil)
+            application.shortcutItems?.append(shortcutItem)
         }
     }
 
-    func application(_: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler _: @escaping (Bool) -> Void) {
+    func application(_: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler _: @escaping (Bool) -> Void) {
         switch shortcutItem.type {
         case "eu.fho-development.Simple-Feed.feed":
             let tabbarController = window?.rootViewController as! CustomTabBarController

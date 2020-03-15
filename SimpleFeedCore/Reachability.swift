@@ -6,7 +6,6 @@
 import Foundation
 import SystemConfiguration
 
-import SystemConfiguration.CaptiveNetwork
 import UIKit
 
 public enum ReachabilityStatus: CustomStringConvertible {

@@ -11,32 +11,36 @@ extension NewsFeedTVC {
     // MARK: - Fetched results controller
 
     var fetchedResultsController: NSFetchedResultsController<Article>? {
-        if _fetchedResultsController != nil, _fetchedResultsController?.managedObjectContext == CoreDataService.shared.viewContext {
-            return _fetchedResultsController!
+        if internalFetchedResultsController != nil,
+            internalFetchedResultsController?.managedObjectContext == CoreDataService.shared.viewContext {
+            return internalFetchedResultsController!
         }
 
         let context = CoreDataService.shared.viewContext
-        let x: NSFetchRequest<Article> = Article.fetchRequest()
-        x.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        let request: NSFetchRequest<Article> = Article.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
 
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil
+        )
         aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
+        internalFetchedResultsController = aFetchedResultsController
 
         do {
             try aFetchedResultsController.performFetch()
         } catch {
             print(error)
         }
-        _fetchedResultsController = aFetchedResultsController
-        return _fetchedResultsController!
+        internalFetchedResultsController = aFetchedResultsController
+        return internalFetchedResultsController!
     }
 
     func controllerWillChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
 
-    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .automatic)

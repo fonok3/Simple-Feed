@@ -77,7 +77,7 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
         print(error)
     }
 
-    func WiFiConnected() -> Bool {
+    func wiFiConnected() -> Bool {
         let networkStatus = Reachability.connectionStatus()
         switch networkStatus {
         case .unknown, .offline:
@@ -135,17 +135,20 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
     }
 
     func setUpDeleteButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "trash"), style: .plain, target: self, action: #selector(deleteReadArticles(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "trash"), style: .plain,
+                                                            target: self, action: #selector(deleteReadArticles(_:)))
     }
 
     func setUpReadButton() {
         if unreadArticles() == 0 {
-            let readButton = UIBarButtonItem(image: UIImage(named: "readSelected"), style: .plain, target: self, action: #selector(NewsFeedTVC.readAll(_:)))
+            let readButton = UIBarButtonItem(image: UIImage(named: "readSelected"), style: .plain,
+                                             target: self, action: #selector(NewsFeedTVC.readAll(_:)))
             readButton.isEnabled = false
             navigationItem.rightBarButtonItem = readButton
 
         } else {
-            let readButton = UIBarButtonItem(image: UIImage(named: "read"), style: .plain, target: self, action: #selector(NewsFeedTVC.readAll(_:)))
+            let readButton = UIBarButtonItem(image: UIImage(named: "read"), style: .plain,
+                                             target: self, action: #selector(NewsFeedTVC.readAll(_:)))
             navigationItem.rightBarButtonItem = readButton
         }
     }
@@ -165,7 +168,9 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
     }
 
     @objc func deleteReadArticles(_: AnyObject) {
-        let alert = UIAlertController(title: NSLocalizedString("DELETE_ARTICLES_HEADER", comment: "Delete Articles Header"), message: NSLocalizedString("DELETE_ARTICLES_MESSAGE", comment: "Delete Articles Message"), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("DELETE_ARTICLES_HEADER", comment: "Delete Articles Header"),
+                                      message: NSLocalizedString("DELETE_ARTICLES_MESSAGE", comment: "Delete Articles Message"),
+                                      preferredStyle: .alert)
 
         let deleteAction = UIAlertAction(title: NSLocalizedString("DELETE", comment: "Delete"), style: .destructive) { _ in
             let deletePredicate = NSPredicate(format: "read == true")
@@ -182,7 +187,9 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
     var undoArticles = [Article]()
 
     @objc func undoLastOperation(_: AnyObject? = nil) {
-        guard let articles = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "SELF IN %@", argumentArray: [undoArticles])) as? [Article] else { return }
+        guard let articles = CoreDataManager.fetch(entity: "Article",
+                                                   with: NSPredicate(format: "SELF IN %@",
+                                                                     argumentArray: [undoArticles])) as? [Article] else { return }
         for article in articles {
             article.read = false
         }
@@ -197,7 +204,8 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
 
         CoreDataManager.markItemAsRead(with:
             NSCompoundPredicate(andPredicateWithSubpredicates: [frcPred, unreadPredicate])) { articles in
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.undo, target: self, action: #selector(self.undoLastOperation(_:)))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.undo,
+                                                                     target: self, action: #selector(self.undoLastOperation(_:)))
             self.undoArticles = articles
             self.navigationController?.popToRootViewController(animated: true)
         }
@@ -243,16 +251,24 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
                 safariController = FHSafariController(article: article)
                 present(safariController, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: NSLocalizedString("OPEN_FALIED", comment: "Open Failed"), message: NSLocalizedString("CANT_OPEN_URL", comment: "Cannot open Url. Please Refresh Data"), preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: NSLocalizedString("OPEN_FALIED", comment: "Open Failed"),
+                                              message: NSLocalizedString("CANT_OPEN_URL",
+                                                                         comment: "Cannot open Url. Please Refresh Data"),
+                                              preferredStyle: UIAlertController.Style.alert)
 
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"),
+                                              style: UIAlertAction.Style.default, handler: nil))
 
                 present(alert, animated: true, completion: nil)
             }
         } else {
-            let alert = UIAlertController(title: NSLocalizedString("OPEN_FALIED", comment: "Open Failed"), message: NSLocalizedString("CANT_OPEN_URL", comment: "Cannot open Url. Please Refresh Data"), preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("OPEN_FALIED", comment: "Open Failed"),
+                                          message: NSLocalizedString("CANT_OPEN_URL",
+                                                                     comment: "Cannot open Url. Please Refresh Data"),
+                                          preferredStyle: UIAlertController.Style.alert)
 
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"),
+                                          style: UIAlertAction.Style.default, handler: nil))
 
             present(alert, animated: true, completion: nil)
         }
@@ -266,14 +282,14 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
     // - Mark: Helper Methods
 
     func useCell() -> CellType {
-        switch UserDefaults.standard.integer(forKey: userDefaults.IMAGE_LOADING) {
-        case userDefaults.ImageLoading.always:
+        switch UserDefaults.standard.integer(forKey: SFUserDefaults.imageLoading) {
+        case SFUserDefaults.ImageLoading.always:
             if view.traitCollection.horizontalSizeClass == .compact {
                 return .imageCompact
             }
             return .imageRegular
-        case userDefaults.ImageLoading.onWifi:
-            if WiFiConnected() {
+        case SFUserDefaults.ImageLoading.onWifi:
+            if wiFiConnected() {
                 if view.traitCollection.horizontalSizeClass == .compact {
                     return .imageCompact
                 }
@@ -286,7 +302,8 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
     }
 
     // - Mark: 3D Touch
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint)
+        -> UIViewController? {
         guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
 
         let cellRect = tableView.rectForRow(at: indexPath).insetBy(dx: tableView.layoutMarginsGuide.layoutFrame.minX - 7, dy: 4)
@@ -314,11 +331,13 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
         }
     }
 
-    var _fetchedResultsController: NSFetchedResultsController<Article>?
+    var internalFetchedResultsController: NSFetchedResultsController<Article>?
 
     @available(iOS 13.0, *)
-    override func tableView(_: UITableView, willPerformPreviewActionForMenuWith _: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        guard let article = articleToPreview, let _ = URL(string: article.link) else {
+    override func tableView(_: UITableView,
+                            willPerformPreviewActionForMenuWith _: UIContextMenuConfiguration,
+                            animator: UIContextMenuInteractionCommitAnimating) {
+        guard let article = articleToPreview, URL(string: article.link) != nil else {
             return
         }
 
@@ -339,15 +358,18 @@ class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDelegate, UI
             return nil
         }
 
-        let readAction = UIAction(title: NSLocalizedString(article.read ? "UNREAD" : "READ", comment: "read"), image: UIImage(systemName: article.read ? "checkmark.circle.fill" : "checkmark.circle")) { _ in
+        let readAction = UIAction(title: NSLocalizedString(article.read ? "UNREAD" : "READ", comment: "read"),
+                                  image: UIImage(systemName: article.read ? "checkmark.circle.fill" : "checkmark.circle")) { _ in
             article.changeReadStatus()
         }
 
-        let tagAction = UIAction(title: NSLocalizedString(article.tagged ? "UNTAG" : "TAG", comment: "tagging"), image: UIImage(systemName: article.tagged ? "bookmark.fill" : "bookmark")) { _ in
+        let tagAction = UIAction(title: NSLocalizedString(article.tagged ? "UNTAG" : "TAG", comment: "tagging"),
+                                 image: UIImage(systemName: article.tagged ? "bookmark.fill" : "bookmark")) { _ in
             article.changeTaggingStatus()
         }
 
-        let shareAction = UIAction(title: NSLocalizedString("SHARE", comment: "Share"), image: UIImage(systemName: "square.and.arrow.up")) { _ in
+        let shareAction = UIAction(title: NSLocalizedString("SHARE", comment: "Share"),
+                                   image: UIImage(systemName: "square.and.arrow.up")) { _ in
             if let url = URL(string: article.link) {
                 self.present(link: url)
             }

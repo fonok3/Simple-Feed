@@ -32,7 +32,8 @@ class NewsFeedTVCGroup: NewsFeedTVC {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    override func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any,
+                             at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         super.controller(controller, didChange: anObject, at: indexPath, for: type, newIndexPath: newIndexPath)
         setUpReadButton()
     }

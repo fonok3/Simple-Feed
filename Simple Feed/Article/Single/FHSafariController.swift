@@ -25,11 +25,13 @@ class FHSafariController: SFSafariViewController {
     }
 
     lazy var previewActions: [UIPreviewActionItem] = {
-        let readAction = UIPreviewAction(title: NSLocalizedString(self.article.read ? "UNREAD" : "READ", comment: "read"), style: .default) { _, _ in
+        let readAction = UIPreviewAction(title: NSLocalizedString(self.article.read ? "UNREAD" : "READ", comment: "read"),
+                                         style: .default) { _, _ in
             self.article.changeReadStatus()
         }
 
-        let tagAction = UIPreviewAction(title: NSLocalizedString(self.article.tagged ? "UNTAG" : "TAG", comment: "tagging"), style: .default) { _, _ in
+        let tagAction = UIPreviewAction(title: NSLocalizedString(self.article.tagged ? "UNTAG" : "TAG", comment: "tagging"),
+                                        style: .default) { _, _ in
             self.article.changeTaggingStatus()
         }
 

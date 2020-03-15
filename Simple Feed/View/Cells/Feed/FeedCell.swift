@@ -6,7 +6,7 @@
 import SimpleFeedCore
 import UIKit
 
-protocol FeedCellDelegate {
+protocol FeedCellDelegate: class {
     func editButtonPressed(_ cell: FeedCell)
     func deleteButtonPressed(_ cell: FeedCell)
 }
@@ -43,31 +43,27 @@ class FeedCell: UICollectionViewCell {
         }
     }
 
-    var delegate: FeedCellDelegate?
+    weak var delegate: FeedCellDelegate?
 
     // - Mark: Image loading
 
     func refreshImage() {
         if feed is Feed {
             var newImageUrl = (feed as? Feed)?.imageUrl ?? ""
-
-            let articlesOfFeed = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "publisher.link = %@", (feed as! Feed).link), and: [NSSortDescriptor(key: "date", ascending: false)]) as! [Article]
-
-            for article in articlesOfFeed {
-                if article.titleImageUrl != "" {
-                    newImageUrl = article.titleImageUrl
-                    break
-                }
+            let articlesOfFeed = CoreDataManager.fetch(entity: "Article", with:
+                NSPredicate(format: "publisher.link = %@", (feed as! Feed).link),
+                                                       and: [NSSortDescriptor(key: "date", ascending: false)]) as! [Article]
+            for article in articlesOfFeed where article.titleImageUrl != "" {
+                newImageUrl = article.titleImageUrl
             }
             titleImageView.loadImage(at: newImageUrl)
-
         } else {
-            let articlesOfFeed = CoreDataManager.fetch(entity: "Article", with: NSPredicate(format: "publisher IN %@ AND read = false", (feed as! Group).feeds!), and: [NSSortDescriptor(key: "date", ascending: false)]) as! [Article]
-            for article in articlesOfFeed {
-                if article.titleImageUrl != "" {
-                    titleImageView.loadImage(at: article.titleImageUrl)
-                    break
-                }
+            let articlesOfFeed = CoreDataManager.fetch(
+                entity: "Article", with: NSPredicate(format: "publisher IN %@ AND read = false", (feed as! Group).feeds!),
+                and: [NSSortDescriptor(key: "date", ascending: false)]
+            ) as! [Article]
+            for article in articlesOfFeed where article.titleImageUrl != "" {
+                titleImageView.loadImage(at: article.titleImageUrl)
             }
         }
     }
