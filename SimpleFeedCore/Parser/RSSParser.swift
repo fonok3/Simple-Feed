@@ -64,7 +64,7 @@ public class RSSParser: NSObject, XMLParserDelegate {
         DispatchQueue.global(qos: .utility).async {
             if let xmlCode = try? Data(contentsOf: self.url) {
                 self.xmlParser = Foundation.XMLParser(data: xmlCode)
-                _ = self.xmlParser
+                _ = self.xmlParser?.parse()
             } else {
                 completion(.failure(.network(nil)))
             }

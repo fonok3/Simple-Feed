@@ -74,10 +74,10 @@ public class FetchManager: NSObject {
                                 let imageParser = HTMLParser(text: summary)
                                 imageParser.parse {
                                     let url = imageParser.firstImageURL
-                                    self.saveFeedItemToCoreData(item, feed: realFeed, image: url, context: context)
+                                    self.saveFeedItemToCoreData(item, feed: realFeed, image: url)
                                 }
                             } else {
-                                self.saveFeedItemToCoreData(item, feed: realFeed, context: context)
+                                self.saveFeedItemToCoreData(item, feed: realFeed)
                             }
                         }
                     }
