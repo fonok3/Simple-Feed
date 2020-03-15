@@ -180,7 +180,7 @@ public class SearchFeedTableViewController: UITableViewController {
                 break
             case .manual:
                 guard let query = searchController.searchBar.text, let url = URL(string: query) else {
-                    self.showErrorAlert()
+                    showErrorAlert()
                     return
                 }
                 let parser = RSSParser(url: url)
