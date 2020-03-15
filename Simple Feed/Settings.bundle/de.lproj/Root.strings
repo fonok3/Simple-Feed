@@ -1,41 +1,32 @@
-/* Article View */
-"ARTICLE_VIEW" = "Artikel Ansicht";
-
-/* Automatic Reading Mode */
-"AUTOMATIC_READING_MODE" = "Lesemodus automatisch aktivieren";
+/* Always */
+"ALWAYS" = "Immer";
 
 /* Article */
 "ARTICLE" = "Artikel";
 
+/* Article View */
+"ARTICLE_VIEW" = "Artikel Ansicht";
+
 /* Unread after */
 "ARTICLES_AFTER_DAYS" = "Löschen nach";
 
-/* One Day */
-"ONE_DAY" = "Einem Tag";
+/* Automatic Reading Mode */
+"AUTOMATIC_READING_MODE" = "Lesemodus automatisch aktivieren";
 
-/* Two Days */
-"TWO_DAYS" = "Zwei Tagen";
-
-/* Two Days */
-"THREE_DAYS" = "Drei Tagen";
-
-/* Two Days */
-"FOUR_DAYS" = "Vier Tagen";
-
-/* Two Days */
-"FIVE_DAYS" = "Fünf Tagen";
-
-/* Settings */
-"SETTINGS" = "Einstellungen";
-
-/* Licenses */
-"LICENSES" = "Lizenzen";
+/* Clean up Database */
+"CLEAN_UP" = "Datenbank aufräumen";
 
 /* Contact */
 "CONTACT" = "Kontakt";
 
-/* Url */
-"URL" = "Webseite";
+/* Database */
+"DATABASE" = "Datenbank";
+
+/* Database Clean Up Description */
+"DATABASE_CLEANUP_DESCRIPTION" = "Sollte die App beim Lesen von Artikeln abstürzen, hilft es die Datenbank aufzuräumen. Dabei bleiben alle Feeds erhalten. Jedoch werden die Artikel neu geladen.";
+
+/* Enable iCloud */
+"ENABLE_ICLOUD" = "iCloud aktivieren";
 
 /* Feed View */
 "FEED" = "Feed";
@@ -43,50 +34,57 @@
 /* Overview */
 "FEED_VIEW" = "Ansicht";
 
-/* Standard */
-"STANDARD" = "Standardansicht";
+/* Two Days */
+"FIVE_DAYS" = "Fünf Tagen";
 
-/* List */
-"LIST" = "Listenansicht";
+/* Two Days */
+"FOUR_DAYS" = "Vier Tagen";
 
-/* Enable iCloud */
-"ENABLE_ICLOUD" = "iCloud aktivieren";
-
-/* Only load images in wifi */
-"IMAGES_ON_WIFI" = "Bilder nur im Wlan laden";
-
-/* Keep last read Article */
-"KEEP_LAST_READ" = "Zuletzt gelesenen Artikel behalten";
-
-/* Clean up Database */
-"CLEAN_UP" = "Datenbank aufräumen";
-
-/* Database */
-"DATABASE" = "Datenbank";
-
-/* Database Clean Up Description*/
-"DATABASE_CLEANUP_DESCRIPTION" = "Sollte die App beim Lesen von Artikeln abstürzen, hilft es die Datenbank aufzuräumen. Dabei bleiben alle Feeds erhalten. Jedoch werden die Artikel neu geladen.";
+/* Group feed by publisher */
+"GROUP_NEWS_FEED_BY_FEED" = "Feed nach Quelle gruppieren";
 
 /* Image Loading */
 "IMAGE_LOADING" = "Titelbilder laden";
 
-/* Always */
-"ALWAYS" = "Immer";
+/* Keep last read Article */
+"KEEP_LAST_READ" = "Zuletzt gelesenen Artikel behalten";
 
-/* On Wifi */
-"ON_WIFI" = "Im WLAN";
+/* Licenses */
+"LICENSES" = "Lizenzen";
+
+/* List */
+"LIST" = "Listenansicht";
 
 /* Never */
 "NEVER" = "Nie";
 
+/* None */
+"NONE" = "Keine";
+
+/* On Wifi */
+"ON_WIFI" = "Im WLAN";
+
+/* One Day */
+"ONE_DAY" = "Einem Tag";
+
 /* Preview Lines */
 "PREVIEW_LINES" = "Vorschauzeilen";
+
+/* Settings */
+"SETTINGS" = "Einstellungen";
+
+/* Standard */
+"STANDARD" = "Standardansicht";
+
+/* Two Days */
+"THREE_DAYS" = "Drei Tagen";
 
 /* Title Lines */
 "TITLE_LINES" = "Titelzeilen";
 
-/* None */
-"NONE" = "Keine";
+/* Two Days */
+"TWO_DAYS" = "Zwei Tagen";
 
-/* Group feed by publisher */
-"GROUP_NEWS_FEED_BY_FEED" = "Feed nach Quelle gruppieren";
+/* Url */
+"URL" = "Webseite";
+

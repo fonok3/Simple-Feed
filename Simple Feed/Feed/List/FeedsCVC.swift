@@ -80,7 +80,7 @@ class FeedsCVC: UICollectionViewController, FeedCellDelegate, NSFetchedResultsCo
     }
 
     func showAddMenu(_ sender: Any) {
-        let alert = UIAlertController(title: "Add", message: "Add Feed or Group?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: NSLocalizedString("ADD", comment: "add"), message: nil, preferredStyle: .actionSheet)
         let feedAction = UIAlertAction(title: "Feed", style: .default) { _ in
             self.addFeed(sender)
         }
