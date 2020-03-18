@@ -1,8 +1,5 @@
 name: Build and Test
-branding:
-  icon: 'check-circle'
-  color: 'green'
-  
+
 on: pull_request
 
 jobs:
