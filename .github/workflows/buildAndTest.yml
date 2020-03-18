@@ -7,7 +7,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Build
-        run: xcodebuild -scheme "Simple Feed" build
+        run: xcodebuild -scheme . build
       - name: Test
         run: xcodebuild test -workspace "Simple Feed"
 
