@@ -50,7 +50,7 @@ extension Feed {
     @NSManaged public func removeFromGroups(_ values: NSSet)
 }
 
-extension Feed {
+public extension Feed {
     static func exists(with url: String?) -> Bool {
         guard let url = url else {
             return false

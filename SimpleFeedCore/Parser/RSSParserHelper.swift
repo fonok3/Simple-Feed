@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct FeedArticle: Codable {
+public struct FeedArticle: Codable {
     var title: String = ""
     var link: String = ""
     var date: Date = Date(timeIntervalSince1970: 0)
@@ -14,9 +14,9 @@ struct FeedArticle: Codable {
     var imageUrl: String = ""
 }
 
-struct FeedInfo: Codable {
-    var title: String = ""
-    var link: String = ""
-    var feedDescription: String = ""
-    var imageUrl: String = ""
+public struct FeedInfo: Codable {
+    public var title: String = ""
+    public var link: String = ""
+    public var feedDescription: String = ""
+    public var imageUrl: String = ""
 }
