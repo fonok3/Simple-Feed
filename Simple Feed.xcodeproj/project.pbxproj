@@ -650,7 +650,6 @@
 			isa = PBXGroup;
 			children = (
 				6D811E4023C768E60041FB7C /* Flavors */,
-				DDDC1D8E1CC016DD00926426 /* Simple Feed */,
 				6D811E4823C76C800041FB7C /* SimpleFeedUI */,
 				6D811E8023C76D660041FB7C /* SimpleFeedCore */,
 				6D811E9C23C76D7F0041FB7C /* Tests */,
@@ -670,13 +669,6 @@
 				6D811E8723C76D660041FB7C /* SimpleFeedCoreTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		DDDC1D8E1CC016DD00926426 /* Simple Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Simple Feed";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

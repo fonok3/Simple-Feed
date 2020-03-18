@@ -1,0 +1,16 @@
+name: Build and Test
+
+on: pull_request
+
+jobs:
+  BuildAndTest:
+    runs-on: macOS-latest
+    steps:
+      - name: Build
+        run: xcodebuild -scheme "Simple Feed" build
+      - name: Test
+        run: xcodebuild test -workspace "Simple Feed"
+
+branding:
+  icon: 'check-circle'
+  color: 'green'
