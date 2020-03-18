@@ -7,8 +7,8 @@ import FHNetworking
 import UIKit
 
 public struct RSSResponse: Codable {
-    var feedType: FeedType = .unknown
-    var feedInfo: FeedInfo = FeedInfo()
+    public internal(set) var feedType: FeedType = .unknown
+    public internal(set) var feedInfo: FeedInfo = FeedInfo()
     var articles: [FeedArticle] = [FeedArticle]()
 }
 
@@ -42,7 +42,7 @@ public class RSSParser: NSObject, XMLParserDelegate {
 
     private var currentTask: URLSessionTask?
 
-    init(url: URL) {
+    public init(url: URL) {
         self.url = url
     }
 
@@ -58,7 +58,7 @@ public class RSSParser: NSObject, XMLParserDelegate {
         completion = { _ in }
     }
 
-    func parse(_ completion: @escaping (Result<RSSResponse, RSSError>) -> Void = { _ in }) {
+    public func parse(_ completion: @escaping (Result<RSSResponse, RSSError>) -> Void = { _ in }) {
         deleteObjects()
         self.completion = completion
         DispatchQueue.global(qos: .utility).async {

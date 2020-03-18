@@ -6,17 +6,17 @@
 import FHNetworking
 import Foundation
 
-enum FeedlyNetworkRequest: FHNetworkRequest {
+public enum FeedlyNetworkRequest: FHNetworkRequest {
     case search(String)
 
-    var path: String {
+    public var path: String {
         switch self {
         case .search:
             return "/v3/search/feeds"
         }
     }
 
-    var parameters: [URLQueryItem] {
+    public var parameters: [URLQueryItem] {
         switch self {
         case let .search(query):
             return [
@@ -25,7 +25,7 @@ enum FeedlyNetworkRequest: FHNetworkRequest {
         }
     }
 
-    var responseType: Any.Type? {
+    public var responseType: Any.Type? {
         switch self {
         case .search:
             return FeedlyResultsResponse.self

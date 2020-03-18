@@ -5,6 +5,6 @@
 
 import Foundation
 
-struct FeedlyResultsResponse: Codable {
-    var results: [FeedlyFeedResponse]
+public struct FeedlyResultsResponse: Codable {
+    public var results: [FeedlyFeedResponse]
 }

@@ -13,7 +13,7 @@ public class FetchManager: NSObject {
         super.init()
     }
 
-    private var fetching = false
+    private var refreshingFeeds = [String: [(Bool) -> Void]]()
 
     public func fetch(_ abstractFeed: AbstractFeed, completion: @escaping ((Bool) -> Void) = { _ in }) {
         if let feed = abstractFeed as? Feed {
@@ -39,18 +39,20 @@ public class FetchManager: NSObject {
             fetchFeed(feed, completion: { _ in
                 numberOfFetchedFeeds += 1
                 if numberOfFetchedFeeds >= numberOfFeeds {
-                    self.fetching = false
                     completion?()
                 }
             })
         }
         if numberOfFeeds == 0 {
-            fetching = false
             completion?()
         }
     }
 
-    private func fetchFeed(_ feed: Feed, completion: ((Bool) -> Void)?) {
+    private func fetchFeed(_ feed: Feed, completion: @escaping ((Bool) -> Void) = { _ in }) {
+        refreshingFeeds[feed.link]?.append(completion)
+        guard refreshingFeeds.keys.contains(feed.link) else {
+            return
+        }
         let lastUpdated: Date = Date().adding(days: -UserDefaults.standard.integer(forKey: SFUserDefaults.deleteArticleAfterDays))
         let url = URL(string: feed.link)!
         let parser = RSSParser(url: url)
@@ -81,10 +83,16 @@ public class FetchManager: NSObject {
                             }
                         }
                     }
-                    completion?(true)
+                    for completion in self.refreshingFeeds[feed.link] ?? [] {
+                        completion(true)
+                    }
+                    self.refreshingFeeds.removeValue(forKey: feed.link)
                 })
             case .failure:
-                completion?(false)
+                for completion in self.refreshingFeeds[feed.link] ?? [] {
+                    completion(false)
+                }
+                self.refreshingFeeds.removeValue(forKey: feed.link)
             }
         }
     }
