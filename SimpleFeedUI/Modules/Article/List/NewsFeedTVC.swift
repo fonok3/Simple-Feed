@@ -36,7 +36,7 @@ public class NewsFeedTVC: UITableViewController, NSFetchedResultsControllerDeleg
 
         refreshHeaderView()
 
-        let nibArticleCellImage = UINib(nibName: "ArticleCell", bundle: nil)
+        let nibArticleCellImage = UINib(nibName: "ArticleCell", bundle: Bundle(for: ArticleCell.self))
         tableView.register(nibArticleCellImage, forCellReuseIdentifier: cellIdentifier)
     }
 

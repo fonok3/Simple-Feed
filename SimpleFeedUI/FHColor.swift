@@ -9,7 +9,8 @@ public final class FHColor {
     // MARK: Label Colors
 
     public static var label: FHGradedColor = FHLabelColors()
-    public static var invertedLabelColor: UIColor = UIColor(named: "invertedLabelColor", in: Bundle.main, compatibleWith: nil)!
+    public static var invertedLabelColor: UIColor = UIColor(named: "invertedLabelColor",
+                                                            in: Bundle(for: FHColor.self), compatibleWith: nil)!
 
     // MARK: Fill Colors
 
@@ -19,14 +20,14 @@ public final class FHColor {
 
     public static var grouped: FHGradedColor = FHBackgroundGroupedColors()
 
-    public static var simpleFeedRed: UIColor = UIColor(named: "simpleFeedRed", in: Bundle.main, compatibleWith: nil)!
-    public static var simpleFeedColor: UIColor = UIColor(named: "simpleFeedColor", in: Bundle.main, compatibleWith: nil)!
+    public static var simpleFeedRed: UIColor = UIColor(named: "simpleFeedRed", in: Bundle(for: FHColor.self), compatibleWith: nil)!
+    public static var simpleFeedColor: UIColor = UIColor(named: "simpleFeedColor", in: Bundle(for: FHColor.self), compatibleWith: nil)!
 
-    public static var tagColor: UIColor = UIColor(named: "tagColor", in: Bundle.main, compatibleWith: nil)!
+    public static var tagColor: UIColor = UIColor(named: "tagColor", in: Bundle(for: FHColor.self), compatibleWith: nil)!
 
-    public static var readColor: UIColor = UIColor(named: "readColor", in: Bundle.main, compatibleWith: nil)!
+    public static var readColor: UIColor = UIColor(named: "readColor", in: Bundle(for: FHColor.self), compatibleWith: nil)!
 
-    public static var borderColor: UIColor = UIColor(named: "borderColor", in: Bundle.main, compatibleWith: nil)!
+    public static var borderColor: UIColor = UIColor(named: "borderColor", in: Bundle(for: FHColor.self), compatibleWith: nil)!
 }
 
 public protocol FHGradedColor {
@@ -37,22 +38,22 @@ public protocol FHGradedColor {
 }
 
 public class FHLabelColors: FHGradedColor {
-    public var primary: UIColor = UIColor(named: "labelPrimary", in: Bundle.main, compatibleWith: nil)!
-    public var secondary: UIColor = UIColor(named: "labelSecondary", in: Bundle.main, compatibleWith: nil)!
-    public var tertiary: UIColor = UIColor(named: "labelTertiary", in: Bundle.main, compatibleWith: nil)!
-    public var quaternary: UIColor = UIColor(named: "labelQuaternary", in: Bundle.main, compatibleWith: nil)!
+    public var primary: UIColor = UIColor(named: "labelPrimary", in: Bundle(for: FHColor.self), compatibleWith: nil)!
+    public var secondary: UIColor = UIColor(named: "labelSecondary", in: Bundle(for: FHColor.self), compatibleWith: nil)!
+    public var tertiary: UIColor = UIColor(named: "labelTertiary", in: Bundle(for: FHColor.self), compatibleWith: nil)!
+    public var quaternary: UIColor = UIColor(named: "labelQuaternary", in: Bundle(for: FHColor.self), compatibleWith: nil)!
 }
 
 public class FHBackgroundColors: FHGradedColor {
-    public var primary: UIColor = UIColor(named: "backgroundPrimary", in: Bundle.main, compatibleWith: nil)!
-    public var secondary: UIColor = UIColor(named: "backgroundSecondary", in: Bundle.main, compatibleWith: nil)!
-    public var tertiary: UIColor = UIColor(named: "backgroundTertiary", in: Bundle.main, compatibleWith: nil)!
+    public var primary: UIColor = UIColor(named: "backgroundPrimary", in: Bundle(for: FHColor.self), compatibleWith: nil)!
+    public var secondary: UIColor = UIColor(named: "backgroundSecondary", in: Bundle(for: FHColor.self), compatibleWith: nil)!
+    public var tertiary: UIColor = UIColor(named: "backgroundTertiary", in: Bundle(for: FHColor.self), compatibleWith: nil)!
     public var quaternary: UIColor = UIColor.red
 }
 
 public class FHBackgroundGroupedColors: FHGradedColor {
-    public var primary: UIColor = UIColor(named: "backgroundPrimaryGrouped", in: Bundle.main, compatibleWith: nil)!
-    public var secondary: UIColor = UIColor(named: "backgroundSecondaryGrouped", in: Bundle.main, compatibleWith: nil)!
-    public var tertiary: UIColor = UIColor(named: "backgroundTertiaryGrouped", in: Bundle.main, compatibleWith: nil)!
+    public var primary: UIColor = UIColor(named: "backgroundPrimaryGrouped", in: Bundle(for: FHColor.self), compatibleWith: nil)!
+    public var secondary: UIColor = UIColor(named: "backgroundSecondaryGrouped", in: Bundle(for: FHColor.self), compatibleWith: nil)!
+    public var tertiary: UIColor = UIColor(named: "backgroundTertiaryGrouped", in: Bundle(for: FHColor.self), compatibleWith: nil)!
     public var quaternary: UIColor = UIColor.red
 }

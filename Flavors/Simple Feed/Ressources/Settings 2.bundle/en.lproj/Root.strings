@@ -1,0 +1,89 @@
+/* Article View */
+"ARTICLE_VIEW" = "Article View";
+
+/* Automatic Reading Mode */
+"AUTOMATIC_READING_MODE" = "Enable Reading Mode automatically";
+
+/* Article */
+"ARTICLE" = "Article";
+
+/* Unread after */
+"ARTICLES_AFTER_DAYS" = "Delete after";
+
+/* One Day */
+"ONE_DAY" = "One Day";
+
+/* Two Days */
+"TWO_DAYS" = "Two Days";
+
+/* Two Days */
+"THREE_DAYS" = "Three Days";
+
+/* Two Days */
+"FOUR_DAYS" = "Four Days";
+
+/* Two Days */
+"FIVE_DAYS" = "Five Days";
+
+/* Settings */
+"SETTINGS" = "Settings";
+
+/* Licenses */
+"LICENSES" = "Licenses";
+
+/* Contact */
+"CONTACT" = "Contact";
+
+/* Url */
+"URL" = "Website";
+
+/* Feed View */
+"FEED" = "Feed";
+
+/* Overview */
+"FEED_VIEW" = "View";
+
+/* Standard */
+"STANDARD" = "Standard";
+
+/* List */
+"LIST" = "List View";
+
+/* Enable iCloud */
+"ENABLE_ICLOUD" = "Enable iCloud";
+
+/* Keep last read Article */
+"KEEP_LAST_READ" = "Keep Last Read";
+
+/* Clean up Database */
+"CLEAN_UP" = "Clean Up Database";
+
+/* Database */
+"DATABASE" = "Database";
+
+/* Database Clean Up Description*/
+"DATABASE_CLEANUP_DESCRIPTION" = "If the app crashes while reading an article a database clean up may help. You will keep your feeds but all articles will reload.";
+
+/* Image Loading */
+"IMAGE_LOADING" = "Load Title Images";
+
+/* Always */
+"ALWAYS" = "Always";
+
+/* On Wifi */
+"ON_WIFI" = "On Wifi";
+
+/* Never */
+"NEVER" = "Never";
+
+/* Preview Lines */
+"PREVIEW_LINES" = "Preview Lines";
+
+/* Title Lines */
+"TITLE_LINES" = "Title Lines";
+
+/* None */
+"NONE" = "None";
+
+/* Group feed by publisher */
+"GROUP_NEWS_FEED_BY_FEED" = "Group feed by publisher";

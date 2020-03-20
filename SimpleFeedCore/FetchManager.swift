@@ -49,10 +49,12 @@ public class FetchManager: NSObject {
     }
 
     private func fetchFeed(_ feed: Feed, completion: @escaping ((Bool) -> Void) = { _ in }) {
-        refreshingFeeds[feed.link]?.append(completion)
-        guard refreshingFeeds.keys.contains(feed.link) else {
+
+        guard !refreshingFeeds.keys.contains(feed.link) else {
+            refreshingFeeds[feed.link]?.append(completion)
             return
         }
+        refreshingFeeds[feed.link] = [completion]
         let lastUpdated: Date = Date().adding(days: -UserDefaults.standard.integer(forKey: SFUserDefaults.deleteArticleAfterDays))
         let url = URL(string: feed.link)!
         let parser = RSSParser(url: url)

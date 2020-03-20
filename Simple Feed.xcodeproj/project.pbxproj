@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57E4FE33233BDFCC003DDF96 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
 		6800A29F1DF1DA98008BCA7B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6800A29E1DF1DA98008BCA7B /* Settings.bundle */; };
 		6D0BA59F2422BA1300A1B6EB /* FHColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4FE34233BE0BA003DDF96 /* FHColor.swift */; };
 		6D0BA5A42422BBB400A1B6EB /* SFNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4FE36233BFB76003DDF96 /* SFNavigationController.swift */; };
@@ -42,6 +41,7 @@
 		6D0BA5C42422BC1100A1B6EB /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D1FD22390374800D336D8 /* UIView+Constraints.swift */; };
 		6D0BA5C52422BC1100A1B6EB /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D1FCC239033FC00D336D8 /* UIColor+RGB.swift */; };
 		6D0BA5C82422BCD500A1B6EB /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF97B271CECA21F000F020E /* SettingsTVC.swift */; };
+		6D0BA5CB2422D07200A1B6EB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
 		6D0E47FC240D4F1300F15C73 /* Simple_Feed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6800A2991DF1D858008BCA7B /* Simple_Feed.xcdatamodeld */; };
 		6D0E47FE240D563200F15C73 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FD240D563200F15C73 /* App.swift */; };
 		6D0E4800240D56DE00F15C73 /* SimpleFeedCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FF240D56DE00F15C73 /* SimpleFeedCore.swift */; };
@@ -867,6 +867,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D0BA5B32422BBDC00A1B6EB /* ArticleCell.xib in Resources */,
+				6D0BA5CB2422D07200A1B6EB /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,7 +899,6 @@
 				DDDC1D9F1CC016DD00926426 /* LaunchScreen.storyboard in Resources */,
 				DDA7A6D51CEE424700359686 /* Localizable.strings in Resources */,
 				6800A29F1DF1DA98008BCA7B /* Settings.bundle in Resources */,
-				57E4FE33233BDFCC003DDF96 /* Colors.xcassets in Resources */,
 				DDDC1D9C1CC016DD00926426 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
