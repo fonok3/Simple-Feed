@@ -46,6 +46,7 @@
 		6D0E47FE240D563200F15C73 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FD240D563200F15C73 /* App.swift */; };
 		6D0E4800240D56DE00F15C73 /* SimpleFeedCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FF240D56DE00F15C73 /* SimpleFeedCore.swift */; };
 		6D0E4810240D8F3000F15C73 /* Article+Modifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E480F240D8F3000F15C73 /* Article+Modifying.swift */; };
+		6D2CD4C42481B9BF00AA798D /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6D2CD4C32481B9BF00AA798D /* FHNetworking */; };
 		6D811E5023C76C800041FB7C /* SimpleFeedUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */; };
 		6D811E5723C76C800041FB7C /* SimpleFeedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D811E5623C76C800041FB7C /* SimpleFeedUITests.swift */; };
 		6D811E5923C76C800041FB7C /* SimpleFeedUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D811E4923C76C800041FB7C /* SimpleFeedUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,7 +61,6 @@
 		6D811E9E23CB9BF30041FB7C /* FeedlyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8130DA2386A5E8009066B0 /* FeedlyNetworkRequest.swift */; };
 		6D811E9F23CB9BF30041FB7C /* FeedlyResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8130D42386A431009066B0 /* FeedlyResultsResponse.swift */; };
 		6D811EA023CB9BF30041FB7C /* FeedlyFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8130D62386A45E009066B0 /* FeedlyFeedResponse.swift */; };
-		6D811EA223CB9C070041FB7C /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6D811EA123CB9C070041FB7C /* FHNetworking */; };
 		6D811EA423CB9C5D0041FB7C /* Timeinterval+Intervals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D1FCE2390366E00D336D8 /* Timeinterval+Intervals.swift */; };
 		6D811EA523CB9C5D0041FB7C /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D1FD02390370C00D336D8 /* Date+Util.swift */; };
 		6D811EA623CB9C5D0041FB7C /* Date+RFC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7FCED223C7161100E42D8E /* Date+RFC.swift */; };
@@ -279,7 +279,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D811EA223CB9C070041FB7C /* FHNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +296,7 @@
 			files = (
 				6D811E5C23C76C800041FB7C /* SimpleFeedUI.framework in Frameworks */,
 				EC08547FC75D5BD05F160077 /* Pods_Simple_Feed.framework in Frameworks */,
+				6D2CD4C42481B9BF00AA798D /* FHNetworking in Frameworks */,
 				6D811E9423C76D660041FB7C /* SimpleFeedCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,7 +755,6 @@
 			);
 			name = SimpleFeedCore;
 			packageProductDependencies = (
-				6D811EA123CB9C070041FB7C /* FHNetworking */,
 			);
 			productName = SimpleFeedCore;
 			productReference = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */;
@@ -801,6 +800,7 @@
 			);
 			name = "Simple Feed";
 			packageProductDependencies = (
+				6D2CD4C32481B9BF00AA798D /* FHNetworking */,
 			);
 			productName = "Simple Feed";
 			productReference = DDDC1D8C1CC016DD00926426 /* Simple Feed.app */;
@@ -854,7 +854,7 @@
 			);
 			mainGroup = DDDC1D831CC016DD00926426;
 			packageReferences = (
-				6D8130CF2386A3F5009066B0 /* XCRemoteSwiftPackageReference "fhnetworking" */,
+				6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */,
 			);
 			productRefGroup = DDDC1D8D1CC016DD00926426 /* Products */;
 			projectDirPath = "";
@@ -1648,20 +1648,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6D8130CF2386A3F5009066B0 /* XCRemoteSwiftPackageReference "fhnetworking" */ = {
+		6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitlab.com/fonok3/fhnetworking.git";
+			repositoryURL = "https://github.com/fonok3/FHNetworking.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
+				minimumVersion = 0.1.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6D811EA123CB9C070041FB7C /* FHNetworking */ = {
+		6D2CD4C32481B9BF00AA798D /* FHNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6D8130CF2386A3F5009066B0 /* XCRemoteSwiftPackageReference "fhnetworking" */;
+			package = 6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */;
 			productName = FHNetworking;
 		};
 /* End XCSwiftPackageProductDependency section */
