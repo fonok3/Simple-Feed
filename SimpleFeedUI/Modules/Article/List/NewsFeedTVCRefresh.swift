@@ -10,6 +10,7 @@ import UIKit
 extension NewsFeedTVC {
     @objc func refresh(_ sender: UIRefreshControl) {
         DispatchQueue.main.async {
+            self.deleteOldArticles()
             self.refreshHeaderView()
             FetchManager.shared.fetchAll {
                 DispatchQueue.main.async {
