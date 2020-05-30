@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57E4FE33233BDFCC003DDF96 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
 		6800A29F1DF1DA98008BCA7B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6800A29E1DF1DA98008BCA7B /* Settings.bundle */; };
 		6D0BA59F2422BA1300A1B6EB /* FHColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4FE34233BE0BA003DDF96 /* FHColor.swift */; };
 		6D0BA5A42422BBB400A1B6EB /* SFNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4FE36233BFB76003DDF96 /* SFNavigationController.swift */; };
@@ -60,7 +59,6 @@
 		6D811E9E23CB9BF30041FB7C /* FeedlyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8130DA2386A5E8009066B0 /* FeedlyNetworkRequest.swift */; };
 		6D811E9F23CB9BF30041FB7C /* FeedlyResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8130D42386A431009066B0 /* FeedlyResultsResponse.swift */; };
 		6D811EA023CB9BF30041FB7C /* FeedlyFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8130D62386A45E009066B0 /* FeedlyFeedResponse.swift */; };
-		6D811EA223CB9C070041FB7C /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6D811EA123CB9C070041FB7C /* FHNetworking */; };
 		6D811EA423CB9C5D0041FB7C /* Timeinterval+Intervals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D1FCE2390366E00D336D8 /* Timeinterval+Intervals.swift */; };
 		6D811EA523CB9C5D0041FB7C /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D1FD02390370C00D336D8 /* Date+Util.swift */; };
 		6D811EA623CB9C5D0041FB7C /* Date+RFC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7FCED223C7161100E42D8E /* Date+RFC.swift */; };
@@ -78,6 +76,9 @@
 		6D811EC623CBA4A90041FB7C /* SimpleFeedCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; };
 		6D811EC723CBA4A90041FB7C /* SimpleFeedCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D811ECE23CBA58B0041FB7C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5703AA23210B3C6F00044F57 /* CoreDataService.swift */; };
+		6DD3F7EC2482F2EB0055581A /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD3F7EB2482F2EB0055581A /* FHNetworking */; };
+		6DD3F7EE2482F3830055581A /* SimpleFeedUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */; };
+		6DD3F7F02482F4650055581A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
 		DD4BD5B51CD12EA600A14D79 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4BD5B41CD12EA600A14D79 /* CustomTabBarController.swift */; };
 		DDA7A6D51CEE424700359686 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7A6D71CEE424700359686 /* Localizable.strings */; };
 		DDDC1D901CC016DD00926426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDC1D8F1CC016DD00926426 /* AppDelegate.swift */; };
@@ -224,6 +225,7 @@
 		6D9D1FD22390374800D336D8 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		6DB7105923904168006CCE9C /* SearchFeedTVC+Sections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFeedTVC+Sections.swift"; sourceTree = "<group>"; };
 		6DCB402623965A8900C7B1BA /* Simple_Feed_9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simple_Feed_9.xcdatamodel; sourceTree = "<group>"; };
+		6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFeedUI.swift; sourceTree = "<group>"; };
 		6DE53B54238D1E870032E969 /* SearchFeedTVC+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFeedTVC+State.swift"; sourceTree = "<group>"; };
 		6DE53B56238D458E0032E969 /* SearchFeedTVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFeedTVC+Search.swift"; sourceTree = "<group>"; };
 		6DE53B5A238D4D650032E969 /* SearchFeedTVC+ResultsUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFeedTVC+ResultsUpdating.swift"; sourceTree = "<group>"; };
@@ -279,7 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D811EA223CB9C070041FB7C /* FHNetworking in Frameworks */,
+				6DD3F7EC2482F2EB0055581A /* FHNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +486,7 @@
 		6D811E4823C76C800041FB7C /* SimpleFeedUI */ = {
 			isa = PBXGroup;
 			children = (
+				6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */,
 				57E4FE36233BFB76003DDF96 /* SFNavigationController.swift */,
 				57E4FE32233BDFCC003DDF96 /* Colors.xcassets */,
 				57E4FE34233BE0BA003DDF96 /* FHColor.swift */,
@@ -755,7 +758,7 @@
 			);
 			name = SimpleFeedCore;
 			packageProductDependencies = (
-				6D811EA123CB9C070041FB7C /* FHNetworking */,
+				6DD3F7EB2482F2EB0055581A /* FHNetworking */,
 			);
 			productName = SimpleFeedCore;
 			productReference = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */;
@@ -813,7 +816,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Florian Herzog";
 				TargetAttributes = {
 					6D811E4623C76C800041FB7C = {
@@ -854,7 +857,7 @@
 			);
 			mainGroup = DDDC1D831CC016DD00926426;
 			packageReferences = (
-				6D8130CF2386A3F5009066B0 /* XCRemoteSwiftPackageReference "fhnetworking" */,
+				6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */,
 			);
 			productRefGroup = DDDC1D8D1CC016DD00926426 /* Products */;
 			projectDirPath = "";
@@ -903,10 +906,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD3F7F02482F4650055581A /* Colors.xcassets in Resources */,
 				DDDC1D9F1CC016DD00926426 /* LaunchScreen.storyboard in Resources */,
 				DDA7A6D51CEE424700359686 /* Localizable.strings in Resources */,
 				6800A29F1DF1DA98008BCA7B /* Settings.bundle in Resources */,
-				57E4FE33233BDFCC003DDF96 /* Colors.xcassets in Resources */,
 				DDDC1D9C1CC016DD00926426 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -998,6 +1001,7 @@
 				6D0BA5AA2422BBCA00A1B6EB /* NewsFeedTVCTag.swift in Sources */,
 				6D0BA5BD2422BC0200A1B6EB /* SearchFeedTVC+ResultsUpdating.swift in Sources */,
 				6D0BA5B62422BBF800A1B6EB /* EditAbstractFeedVC.swift in Sources */,
+				6DD3F7EE2482F3830055581A /* SimpleFeedUI.swift in Sources */,
 				6D0BA5BC2422BC0200A1B6EB /* SearchFeedTVC+Search.swift in Sources */,
 				6D0BA5B22422BBD600A1B6EB /* ArticleCell.swift in Sources */,
 				6D0BA5C22422BC0B00A1B6EB /* WebImageView.swift in Sources */,
@@ -1157,7 +1161,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1196,7 +1200,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1291,7 +1295,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1331,7 +1335,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1648,20 +1652,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6D8130CF2386A3F5009066B0 /* XCRemoteSwiftPackageReference "fhnetworking" */ = {
+		6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitlab.com/fonok3/fhnetworking.git";
+			repositoryURL = "https://github.com/fonok3/FHNetworking.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
+				minimumVersion = 0.1.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6D811EA123CB9C070041FB7C /* FHNetworking */ = {
+		6DD3F7EB2482F2EB0055581A /* FHNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6D8130CF2386A3F5009066B0 /* XCRemoteSwiftPackageReference "fhnetworking" */;
+			package = 6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */;
 			productName = FHNetworking;
 		};
 /* End XCSwiftPackageProductDependency section */
