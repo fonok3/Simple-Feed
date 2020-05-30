@@ -1,14 +1,17 @@
-name: Build and Test
-
-on: pull_request
-
+name: Testing
+on:
+  pull_request:
+    branches:
+    - develop
 jobs:
-  BuildAndTest:
+  test:
+    name: Testing Swift Package and iOS app
     runs-on: macOS-latest
     steps:
-      - name: Build
-        run: xcodebuild -scheme . build
-      - name: Test
-        run: xcodebuild test -workspace "Simple Feed"
-
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Force XCode 11.3
+        run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+      - name: Testing iOS app
+        run: exec ./.github/scripts/test_app.sh
 
