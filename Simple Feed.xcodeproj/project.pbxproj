@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57E4FE33233BDFCC003DDF96 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
 		6800A29F1DF1DA98008BCA7B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6800A29E1DF1DA98008BCA7B /* Settings.bundle */; };
 		6D0BA59F2422BA1300A1B6EB /* FHColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4FE34233BE0BA003DDF96 /* FHColor.swift */; };
 		6D0BA5A42422BBB400A1B6EB /* SFNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4FE36233BFB76003DDF96 /* SFNavigationController.swift */; };
@@ -46,7 +45,6 @@
 		6D0E47FE240D563200F15C73 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FD240D563200F15C73 /* App.swift */; };
 		6D0E4800240D56DE00F15C73 /* SimpleFeedCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FF240D56DE00F15C73 /* SimpleFeedCore.swift */; };
 		6D0E4810240D8F3000F15C73 /* Article+Modifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E480F240D8F3000F15C73 /* Article+Modifying.swift */; };
-		6D2CD4C42481B9BF00AA798D /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6D2CD4C32481B9BF00AA798D /* FHNetworking */; };
 		6D811E5023C76C800041FB7C /* SimpleFeedUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */; };
 		6D811E5723C76C800041FB7C /* SimpleFeedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D811E5623C76C800041FB7C /* SimpleFeedUITests.swift */; };
 		6D811E5923C76C800041FB7C /* SimpleFeedUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D811E4923C76C800041FB7C /* SimpleFeedUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -78,6 +76,9 @@
 		6D811EC623CBA4A90041FB7C /* SimpleFeedCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; };
 		6D811EC723CBA4A90041FB7C /* SimpleFeedCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D811ECE23CBA58B0041FB7C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5703AA23210B3C6F00044F57 /* CoreDataService.swift */; };
+		6DD3F7EC2482F2EB0055581A /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD3F7EB2482F2EB0055581A /* FHNetworking */; };
+		6DD3F7EE2482F3830055581A /* SimpleFeedUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */; };
+		6DD3F7F02482F4650055581A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
 		DD4BD5B51CD12EA600A14D79 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4BD5B41CD12EA600A14D79 /* CustomTabBarController.swift */; };
 		DDA7A6D51CEE424700359686 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7A6D71CEE424700359686 /* Localizable.strings */; };
 		DDDC1D901CC016DD00926426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDC1D8F1CC016DD00926426 /* AppDelegate.swift */; };
@@ -224,6 +225,7 @@
 		6D9D1FD22390374800D336D8 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		6DB7105923904168006CCE9C /* SearchFeedTVC+Sections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFeedTVC+Sections.swift"; sourceTree = "<group>"; };
 		6DCB402623965A8900C7B1BA /* Simple_Feed_9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simple_Feed_9.xcdatamodel; sourceTree = "<group>"; };
+		6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFeedUI.swift; sourceTree = "<group>"; };
 		6DE53B54238D1E870032E969 /* SearchFeedTVC+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFeedTVC+State.swift"; sourceTree = "<group>"; };
 		6DE53B56238D458E0032E969 /* SearchFeedTVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFeedTVC+Search.swift"; sourceTree = "<group>"; };
 		6DE53B5A238D4D650032E969 /* SearchFeedTVC+ResultsUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFeedTVC+ResultsUpdating.swift"; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD3F7EC2482F2EB0055581A /* FHNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +299,6 @@
 			files = (
 				6D811E5C23C76C800041FB7C /* SimpleFeedUI.framework in Frameworks */,
 				EC08547FC75D5BD05F160077 /* Pods_Simple_Feed.framework in Frameworks */,
-				6D2CD4C42481B9BF00AA798D /* FHNetworking in Frameworks */,
 				6D811E9423C76D660041FB7C /* SimpleFeedCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +486,7 @@
 		6D811E4823C76C800041FB7C /* SimpleFeedUI */ = {
 			isa = PBXGroup;
 			children = (
+				6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */,
 				57E4FE36233BFB76003DDF96 /* SFNavigationController.swift */,
 				57E4FE32233BDFCC003DDF96 /* Colors.xcassets */,
 				57E4FE34233BE0BA003DDF96 /* FHColor.swift */,
@@ -755,6 +758,7 @@
 			);
 			name = SimpleFeedCore;
 			packageProductDependencies = (
+				6DD3F7EB2482F2EB0055581A /* FHNetworking */,
 			);
 			productName = SimpleFeedCore;
 			productReference = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */;
@@ -800,7 +804,6 @@
 			);
 			name = "Simple Feed";
 			packageProductDependencies = (
-				6D2CD4C32481B9BF00AA798D /* FHNetworking */,
 			);
 			productName = "Simple Feed";
 			productReference = DDDC1D8C1CC016DD00926426 /* Simple Feed.app */;
@@ -903,10 +906,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD3F7F02482F4650055581A /* Colors.xcassets in Resources */,
 				DDDC1D9F1CC016DD00926426 /* LaunchScreen.storyboard in Resources */,
 				DDA7A6D51CEE424700359686 /* Localizable.strings in Resources */,
 				6800A29F1DF1DA98008BCA7B /* Settings.bundle in Resources */,
-				57E4FE33233BDFCC003DDF96 /* Colors.xcassets in Resources */,
 				DDDC1D9C1CC016DD00926426 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -998,6 +1001,7 @@
 				6D0BA5AA2422BBCA00A1B6EB /* NewsFeedTVCTag.swift in Sources */,
 				6D0BA5BD2422BC0200A1B6EB /* SearchFeedTVC+ResultsUpdating.swift in Sources */,
 				6D0BA5B62422BBF800A1B6EB /* EditAbstractFeedVC.swift in Sources */,
+				6DD3F7EE2482F3830055581A /* SimpleFeedUI.swift in Sources */,
 				6D0BA5BC2422BC0200A1B6EB /* SearchFeedTVC+Search.swift in Sources */,
 				6D0BA5B22422BBD600A1B6EB /* ArticleCell.swift in Sources */,
 				6D0BA5C22422BC0B00A1B6EB /* WebImageView.swift in Sources */,
@@ -1659,7 +1663,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6D2CD4C32481B9BF00AA798D /* FHNetworking */ = {
+		6DD3F7EB2482F2EB0055581A /* FHNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */;
 			productName = FHNetworking;
