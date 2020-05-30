@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -79,6 +79,7 @@
 		6D811ECE23CBA58B0041FB7C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5703AA23210B3C6F00044F57 /* CoreDataService.swift */; };
 		6DD3F7EE2482F3830055581A /* SimpleFeedUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */; };
 		6DD3F7F02482F4650055581A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
+		6DD3F7F3248302A40055581A /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD3F7F2248302A40055581A /* FHNetworking */; };
 		DD4BD5B51CD12EA600A14D79 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4BD5B41CD12EA600A14D79 /* CustomTabBarController.swift */; };
 		DDA7A6D51CEE424700359686 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7A6D71CEE424700359686 /* Localizable.strings */; };
 		DDDC1D901CC016DD00926426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDC1D8F1CC016DD00926426 /* AppDelegate.swift */; };
@@ -281,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD3F7F3248302A40055581A /* FHNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +751,7 @@
 			);
 			name = SimpleFeedCore;
 			packageProductDependencies = (
+				6DD3F7F2248302A40055581A /* FHNetworking */,
 			);
 			productName = SimpleFeedCore;
 			productReference = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */;
@@ -811,24 +814,16 @@
 				TargetAttributes = {
 					6D811E4623C76C800041FB7C = {
 						CreatedOnToolsVersion = 11.3;
-						DevelopmentTeam = C4YARYVL6H;
-						ProvisioningStyle = Automatic;
 					};
 					6D811E4E23C76C800041FB7C = {
 						CreatedOnToolsVersion = 11.3;
-						DevelopmentTeam = C4YARYVL6H;
-						ProvisioningStyle = Automatic;
 						TestTargetID = DDDC1D8B1CC016DD00926426;
 					};
 					6D811E7E23C76D660041FB7C = {
 						CreatedOnToolsVersion = 11.3;
-						DevelopmentTeam = C4YARYVL6H;
-						ProvisioningStyle = Automatic;
 					};
 					6D811E8623C76D660041FB7C = {
 						CreatedOnToolsVersion = 11.3;
-						DevelopmentTeam = C4YARYVL6H;
-						ProvisioningStyle = Automatic;
 						TestTargetID = DDDC1D8B1CC016DD00926426;
 					};
 					DDDC1D8B1CC016DD00926426 = {
@@ -855,6 +850,7 @@
 			);
 			mainGroup = DDDC1D831CC016DD00926426;
 			packageReferences = (
+				6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */,
 			);
 			productRefGroup = DDDC1D8D1CC016DD00926426 /* Products */;
 			projectDirPath = "";
@@ -1171,7 +1167,11 @@
 				INFOPLIST_FILE = SimpleFeedUI/Ressources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedUI";
@@ -1206,7 +1206,11 @@
 				INFOPLIST_FILE = SimpleFeedUI/Ressources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedUI";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1233,7 +1237,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SimpleFeedUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedUITests";
@@ -1259,7 +1267,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SimpleFeedUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1290,7 +1302,11 @@
 				INFOPLIST_FILE = SimpleFeedCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedCore";
@@ -1326,7 +1342,11 @@
 				INFOPLIST_FILE = SimpleFeedCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedCore";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1353,7 +1373,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SimpleFeedCoreTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedCoreTests";
@@ -1379,7 +1403,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SimpleFeedCoreTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.herzog-de.SimpleFeedCoreTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1490,7 +1518,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1510,7 +1539,10 @@
 				DEVELOPMENT_TEAM = C4YARYVL6H;
 				INFOPLIST_FILE = "Flavors/Simple Feed/Ressources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.fho-development.Simple-Feed";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1539,7 +1571,10 @@
 				DEVELOPMENT_TEAM = C4YARYVL6H;
 				INFOPLIST_FILE = "Flavors/Simple Feed/Ressources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.fho-development.Simple-Feed";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1609,6 +1644,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:fonok3/FHNetworking.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6DD3F7F2248302A40055581A /* FHNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */;
+			productName = FHNetworking;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6800A2991DF1D858008BCA7B /* Simple_Feed.xcdatamodeld */ = {
