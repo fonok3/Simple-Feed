@@ -14,7 +14,7 @@ jobs:
         uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-host: your-server.com
+          ssh-host: github.com
       - name: Setup known_hosts
         run: |
           mkdir -p ~/.ssh
