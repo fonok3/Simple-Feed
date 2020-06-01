@@ -11,10 +11,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
       - name: Set up ssh-agent
-        uses: yakuhzi/action-ssh-agent@v1
+        uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
-          ssh-public-key: ${{ secrets.SSH_PUBLIC_KEY }}
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-host: your-server.com
       - name: Setup known_hosts
         run: |
           mkdir -p ~/.ssh
