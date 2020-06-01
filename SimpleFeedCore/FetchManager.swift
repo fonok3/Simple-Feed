@@ -49,8 +49,9 @@ public class FetchManager: NSObject {
     }
 
     private func fetchFeed(_ feed: Feed, completion: @escaping ((Bool) -> Void) = { _ in }) {
-        refreshingFeeds[feed.link]?.append(completion)
+
         guard !refreshingFeeds.keys.contains(feed.link) else {
+            refreshingFeeds[feed.link]?.append(completion)
             return
         }
         refreshingFeeds[feed.link] = [completion]

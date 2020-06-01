@@ -41,6 +41,7 @@
 		6D0BA5C42422BC1100A1B6EB /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D1FD22390374800D336D8 /* UIView+Constraints.swift */; };
 		6D0BA5C52422BC1100A1B6EB /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D1FCC239033FC00D336D8 /* UIColor+RGB.swift */; };
 		6D0BA5C82422BCD500A1B6EB /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF97B271CECA21F000F020E /* SettingsTVC.swift */; };
+		6D0BA5CB2422D07200A1B6EB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
 		6D0E47FC240D4F1300F15C73 /* Simple_Feed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6800A2991DF1D858008BCA7B /* Simple_Feed.xcdatamodeld */; };
 		6D0E47FE240D563200F15C73 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FD240D563200F15C73 /* App.swift */; };
 		6D0E4800240D56DE00F15C73 /* SimpleFeedCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FF240D56DE00F15C73 /* SimpleFeedCore.swift */; };
@@ -76,9 +77,9 @@
 		6D811EC623CBA4A90041FB7C /* SimpleFeedCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; };
 		6D811EC723CBA4A90041FB7C /* SimpleFeedCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D811ECE23CBA58B0041FB7C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5703AA23210B3C6F00044F57 /* CoreDataService.swift */; };
-		6DD3F7EC2482F2EB0055581A /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD3F7EB2482F2EB0055581A /* FHNetworking */; };
 		6DD3F7EE2482F3830055581A /* SimpleFeedUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */; };
 		6DD3F7F02482F4650055581A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
+		6DD3F7F3248302A40055581A /* FHNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD3F7F2248302A40055581A /* FHNetworking */; };
 		DD4BD5B51CD12EA600A14D79 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4BD5B41CD12EA600A14D79 /* CustomTabBarController.swift */; };
 		DDA7A6D51CEE424700359686 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7A6D71CEE424700359686 /* Localizable.strings */; };
 		DDDC1D901CC016DD00926426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDC1D8F1CC016DD00926426 /* AppDelegate.swift */; };
@@ -281,7 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DD3F7EC2482F2EB0055581A /* FHNetworking in Frameworks */,
+				6DD3F7F3248302A40055581A /* FHNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,7 +654,6 @@
 			isa = PBXGroup;
 			children = (
 				6D811E4023C768E60041FB7C /* Flavors */,
-				DDDC1D8E1CC016DD00926426 /* Simple Feed */,
 				6D811E4823C76C800041FB7C /* SimpleFeedUI */,
 				6D811E8023C76D660041FB7C /* SimpleFeedCore */,
 				6D811E9C23C76D7F0041FB7C /* Tests */,
@@ -673,13 +673,6 @@
 				6D811E8723C76D660041FB7C /* SimpleFeedCoreTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		DDDC1D8E1CC016DD00926426 /* Simple Feed */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Simple Feed";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -758,7 +751,7 @@
 			);
 			name = SimpleFeedCore;
 			packageProductDependencies = (
-				6DD3F7EB2482F2EB0055581A /* FHNetworking */,
+				6DD3F7F2248302A40055581A /* FHNetworking */,
 			);
 			productName = SimpleFeedCore;
 			productReference = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */;
@@ -857,7 +850,7 @@
 			);
 			mainGroup = DDDC1D831CC016DD00926426;
 			packageReferences = (
-				6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */,
+				6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */,
 			);
 			productRefGroup = DDDC1D8D1CC016DD00926426 /* Products */;
 			projectDirPath = "";
@@ -878,6 +871,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D0BA5B32422BBDC00A1B6EB /* ArticleCell.xib in Resources */,
+				6D0BA5CB2422D07200A1B6EB /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1652,9 +1646,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */ = {
+		6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fonok3/FHNetworking.git";
+			repositoryURL = "git@github.com:fonok3/FHNetworking.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.1.3;
@@ -1663,9 +1657,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6DD3F7EB2482F2EB0055581A /* FHNetworking */ = {
+		6DD3F7F2248302A40055581A /* FHNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6D2CD4C22481B9BF00AA798D /* XCRemoteSwiftPackageReference "FHNetworking" */;
+			package = 6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */;
 			productName = FHNetworking;
 		};
 /* End XCSwiftPackageProductDependency section */

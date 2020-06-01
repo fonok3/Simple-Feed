@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StringsTable</key>
+	<string>Root</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>InAppSettingsKit</string>
+			<key>FooterText</key>
+			<string>We released the code under the liberal BSD license in order to make it possible to include it in every project, be it a free or paid app. The only thing we ask for is giving the original developers some credit. The easiest way to include credits is by leaving the &quot;Powered by InAppSettingsKit&quot; notice in the code. If you decide to remove this notice, a noticeable mention on the App Store description page or homepage is fine, too. To gain some exposure for your app we suggest adding your app to our list.</string>
+		</dict>
+	</array>
+</dict>
+</plist>
