@@ -10,12 +10,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-      - name: Setup SSH Keys and known_hosts
+      - name: Set up ssh-agent
+        uses: yakuhzi/action-ssh-agent@v1
+        with:
+          public: ${{ secrets.SSH_PUBLIC_KEY }}
+          private: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup known_hosts
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts
-          echo "${{ secrets.SSH_PRIVATE_KEY_FH_NETWORKING }}" >> ~/.ssh/id_rsa
       - name: Force XCode 11.3
         run: sudo xcode-select -switch /Applications/Xcode_11.3.app
       - name: Testing iOS app
