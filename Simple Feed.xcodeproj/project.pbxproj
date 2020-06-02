@@ -1534,7 +1534,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Flavors/Simple Feed/Ressources/Simple Feed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 200;
+				CURRENT_PROJECT_VERSION = 201;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = C4YARYVL6H;
 				INFOPLIST_FILE = "Flavors/Simple Feed/Ressources/Info.plist";
@@ -1566,7 +1566,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Flavors/Simple Feed/Ressources/Simple Feed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 200;
+				CURRENT_PROJECT_VERSION = 201;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = C4YARYVL6H;
 				INFOPLIST_FILE = "Flavors/Simple Feed/Ressources/Info.plist";
