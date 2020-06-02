@@ -1,8 +1,8 @@
 name: Deploying
 on:
-  push:
+  pull_request:
     branches:
-      - develop
+    - develop
 jobs:
   deploy:
     name: Deploying to Testflight
@@ -14,7 +14,8 @@ jobs:
         run: brew install gnupg
       - name: Setup provisioning profile
         env:
-          IOS_KEYS: ${{ secrets.IOS_KEYS }}
+          IOS_KEYS_PROVISIONING: ${{ secrets.IOS_KEYS_PROVISIONING }}
+          IOS_KEYS_CERTIFICATE: ${{ secrets.IOS_KEYS_CERTIFICATE }}
         run: ./.github/secrets/decrypt_secrets.sh
       - name: Archiving project
         env:
