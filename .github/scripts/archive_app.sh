@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+xcodebuild -resolvePackageDependencies -workspace ./Simple\ Feed.xcworkspace -scheme Simple\ Feed
+
 xcodebuild -workspace Simple\ Feed.xcworkspace \
             -scheme Simple\ Feed \
             -sdk iphoneos \
