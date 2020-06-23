@@ -7,8 +7,8 @@ buildNumber=$(($buildNumber + 1))
 
 /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $buildNumber" "$buildPlist"
 
-git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-git pull github ${GITHUB_REF} --ff-only
-
-git commit --all -m "🔖 v$versionNumber - $buildNumber"
-git push github HEAD:${GITHUB_REF}
+#git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+#git pull github ${GITHUB_REF} --ff-only
+#
+#git commit --all -m "🔖 v$versionNumber - $buildNumber"
+#git push github HEAD:${GITHUB_REF}
