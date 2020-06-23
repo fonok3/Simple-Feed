@@ -29,15 +29,17 @@ jobs:
           for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts
       - name: Cleaning project
         run: ./.github/scripts/01_clean_project.sh
+      - name: Increase Version
+        run: ./.github/scripts/02_clean_project.sh
       - name: Archiving project
         env:
           PR_NUMBER: $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-        run: ./.github/scripts/02_archive_project.sh
+        run: ./.github/scripts/03_archive_project.sh
       - name: Exporting .ipa
-        run: ./.github/scripts/03_export_ipa.sh
+        run: ./.github/scripts/04_export_ipa.sh
       - name: Publishing app
         if: success()
         env:
           APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
           APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
-        run: ./.github/scripts/04_publish_testflight.sh
+        run: ./.github/scripts/05_publish_testflight.sh

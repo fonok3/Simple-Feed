@@ -75,7 +75,6 @@
 		6D811EBA23CB9DE20041FB7C /* AbstractFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68455AD61EE5D3A000128490 /* AbstractFeed.swift */; };
 		6D811EC523CB9EE10041FB7C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DB975F1E48986300F48FFA /* Constants.swift */; };
 		6D811EC623CBA4A90041FB7C /* SimpleFeedCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; };
-		6D811EC723CBA4A90041FB7C /* SimpleFeedCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E7F23C76D660041FB7C /* SimpleFeedCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D811ECE23CBA58B0041FB7C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5703AA23210B3C6F00044F57 /* CoreDataService.swift */; };
 		6DD3F7EE2482F3830055581A /* SimpleFeedUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3F7ED2482F3830055581A /* SimpleFeedUI.swift */; };
 		6DD3F7F02482F4650055581A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E4FE32233BDFCC003DDF96 /* Colors.xcassets */; };
@@ -149,17 +148,6 @@
 			files = (
 				6D811E5D23C76C800041FB7C /* SimpleFeedUI.framework in Embed Frameworks */,
 				6D811E9523C76D660041FB7C /* SimpleFeedCore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D811ECA23CBA4A90041FB7C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6D811EC723CBA4A90041FB7C /* SimpleFeedCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,7 +693,6 @@
 				6D811E4323C76C800041FB7C /* Sources */,
 				6D811E4423C76C800041FB7C /* Frameworks */,
 				6D811E4523C76C800041FB7C /* Resources */,
-				6D811ECA23CBA4A90041FB7C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1542,7 +1529,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.fho-development.Simple-Feed";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1574,7 +1561,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.fho-development.Simple-Feed";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Simple Feed";
