@@ -30,7 +30,7 @@ jobs:
       - name: Cleaning project
         run: ./.github/scripts/01_clean_project.sh
       - name: Increase Version
-        run: ./.github/scripts/02_clean_project.sh
+        run: ./.github/scripts/02_increase_build_number.sh
       - name: Archiving project
         env:
           PR_NUMBER: $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
