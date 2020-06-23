@@ -8,9 +8,9 @@ xcodebuild  -showBuildSettings \
             -workspace Simple\ Feed.xcworkspace \
             -scheme Simple\ Feed \
 
-xcodebuild -workspace Simple\ Feed.xcworkspace \
+xcodebuild  -workspace Simple\ Feed.xcworkspace \
             -scheme Simple\ Feed \
-            -sdk iphoneos \
+            -destination 'gerneric/platform=iOS' \
             -configuration AppStoreDistribution \
             -archivePath $PWD/build/SimpleFeed.xcarchive \
             clean archive | xcpretty
