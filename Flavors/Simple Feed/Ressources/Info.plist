@@ -2,28 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>BuildEnvironment</key>
-	<dict>
-		<key>BuildDate</key>
-		<string>Tue Jun 23 12:08:27 CEST 2020</string>
-		<key>BuildMachine</key>
-		<dict>
-			<key>Hostname</key>
-			<string>Florians-MBP-2.fritz.box</string>
-			<key>Model</key>
-			<string>MacBookPro15,2</string>
-			<key>Name</key>
-			<string>Florians MacBook Pro</string>
-			<key>UUID</key>
-			<string>63CD5FCF-5DE2-5375-8B4D-D7E3D6F9363A</string>
-		</dict>
-		<key>BuildUser</key>
-		<string>Florian Herzog (fonok3)</string>
-		<key>GitRef</key>
-		<string>78700cc8b4a13a497a72b85440c0c073676ebd7e</string>
-		<key>GitUser</key>
-		<string>Florian Herzog (fl.herzog@icloud.com)</string>
-	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
