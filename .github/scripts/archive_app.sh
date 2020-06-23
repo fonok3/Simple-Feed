@@ -4,7 +4,7 @@ set -eo pipefail
 
 xcodebuild -resolvePackageDependencies -workspace ./Simple\ Feed.xcworkspace -scheme Simple\ Feed
 
-xcodebuild  -showbuildsettings
+xcodebuild  -showBuildSettings
             -workspace Simple\ Feed.xcworkspace \
             -scheme Simple\ Feed \
 
