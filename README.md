@@ -2,6 +2,7 @@
 
 ![SwiftLint](https://github.com/fonok3/Simple-Feed/workflows/SwiftLint/badge.svg)
 ![Build and Test](https://github.com/fonok3/Simple-Feed/workflows/Build%20and%20Test/badge.svg)
+![Deploying](https://github.com/fonok3/Simple-Feed/workflows/Deploying/badge.svg)
 
 ## Contributing
 
