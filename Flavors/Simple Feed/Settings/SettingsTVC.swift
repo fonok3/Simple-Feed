@@ -15,7 +15,7 @@ class SettingsTVC: IASKAppSettingsViewController, IASKSettingsDelegate {
 
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsTVC.settingDidChange(_:)),
-                                               name: NSNotification.Name(rawValue: kIASKAppSettingChanged), object: nil)
+                                               name: NSNotification.Name.IASKSettingChanged, object: nil)
         showDoneButton = false
         neverShowPrivacySettings = true
         delegate = self
@@ -71,7 +71,7 @@ class SettingsTVC: IASKAppSettingsViewController, IASKSettingsDelegate {
 
     func settingsViewControllerDidEnd(_: IASKAppSettingsViewController) {}
 
-    func settingsViewController(_: IASKAppSettingsViewController!, buttonTappedFor _: IASKSpecifier!) {}
+    func settingsViewController(_: IASKAppSettingsViewController, buttonTappedFor _: IASKSpecifier) {}
 
     override func mailComposeController(_ controller: MFMailComposeViewController,
                                         didFinishWith _: MFMailComposeResult, error _: Error!) {

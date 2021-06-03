@@ -1,6 +1,0 @@
-framework module Pods_Simple_Feed {
-  umbrella header "Pods-Simple Feed-umbrella.h"
-
-  export *
-  module * { export * }
-}

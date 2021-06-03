@@ -263,7 +263,7 @@ public class FeedsCVC: UICollectionViewController, FeedCellDelegate, NSFetchedRe
 
     @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
-        case UIGestureRecognizerState.began:
+        case UIGestureRecognizer.State.began:
             guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
                 break
             }
@@ -273,9 +273,9 @@ public class FeedsCVC: UICollectionViewController, FeedCellDelegate, NSFetchedRe
                 cellX = cell
             }
             setEditing(true, animated: true)
-        case UIGestureRecognizerState.changed:
+        case UIGestureRecognizer.State.changed:
             collectionView?.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-        case UIGestureRecognizerState.ended:
+        case UIGestureRecognizer.State.ended:
             collectionView?.endInteractiveMovement()
             cellX?.moving = false
         default:

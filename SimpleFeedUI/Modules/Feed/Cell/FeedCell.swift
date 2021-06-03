@@ -6,7 +6,7 @@
 import SimpleFeedCore
 import UIKit
 
-protocol FeedCellDelegate: class {
+protocol FeedCellDelegate: AnyObject {
     func editButtonPressed(_ cell: FeedCell)
     func deleteButtonPressed(_ cell: FeedCell)
 }
