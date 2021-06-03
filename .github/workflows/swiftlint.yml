@@ -1,0 +1,19 @@
+name: SwiftLint
+
+on:
+  pull_request:
+    paths:
+      - '.swiftlint.yml'
+      - '**/*.swift'
+
+jobs:
+  SwiftLint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Swift Lint
+        uses: norio-nomura/action-swiftlint@3.1.0
+        with:
+          args: --strict
+        env:
+          DIFF_BASE: ${{ github.base_ref }}
