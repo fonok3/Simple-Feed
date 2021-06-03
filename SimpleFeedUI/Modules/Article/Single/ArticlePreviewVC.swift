@@ -6,7 +6,7 @@
 import SimpleFeedCore
 import UIKit
 
-protocol ShareDelegate: class {
+protocol ShareDelegate: AnyObject {
     func present(link: URL)
 }
 
