@@ -5,7 +5,7 @@
 
 import UIKit
 
-protocol WebImageViewDelegate: class {
+protocol WebImageViewDelegate: AnyObject {
     func loadingError()
 }
 

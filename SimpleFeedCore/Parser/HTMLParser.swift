@@ -5,7 +5,7 @@
 
 import UIKit
 
-protocol HTMLParserDelegate: class {
+protocol HTMLParserDelegate: AnyObject {
     func HTMLParserError(_ parser: HTMLParser, error: String)
 }
 

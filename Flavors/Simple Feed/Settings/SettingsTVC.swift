@@ -71,7 +71,7 @@ class SettingsTVC: IASKAppSettingsViewController, IASKSettingsDelegate {
 
     func settingsViewControllerDidEnd(_: IASKAppSettingsViewController) {}
 
-    func settingsViewController(_: IASKAppSettingsViewController!, buttonTappedFor _: IASKSpecifier!) {}
+    func settingsViewController(_: IASKAppSettingsViewController, buttonTappedFor _: IASKSpecifier) {}
 
     override func mailComposeController(_ controller: MFMailComposeViewController,
                                         didFinishWith _: MFMailComposeResult, error _: Error!) {
