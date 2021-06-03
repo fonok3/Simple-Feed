@@ -46,6 +46,8 @@
 		6D0E47FE240D563200F15C73 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FD240D563200F15C73 /* App.swift */; };
 		6D0E4800240D56DE00F15C73 /* SimpleFeedCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E47FF240D56DE00F15C73 /* SimpleFeedCore.swift */; };
 		6D0E4810240D8F3000F15C73 /* Article+Modifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0E480F240D8F3000F15C73 /* Article+Modifying.swift */; };
+		6D2C8B4826695229004A0E1B /* InAppSettingsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6D2C8B4726695229004A0E1B /* InAppSettingsKit */; };
+		6D2C8B4B26695231004A0E1B /* InAppSettingsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6D2C8B4A26695231004A0E1B /* InAppSettingsKit */; };
 		6D811E5923C76C800041FB7C /* SimpleFeedUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D811E4923C76C800041FB7C /* SimpleFeedUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D811E5C23C76C800041FB7C /* SimpleFeedUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */; };
 		6D811E5D23C76C800041FB7C /* SimpleFeedUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -213,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D811EC623CBA4A90041FB7C /* SimpleFeedCore.framework in Frameworks */,
+				6D2C8B4B26695231004A0E1B /* InAppSettingsKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D811E5C23C76C800041FB7C /* SimpleFeedUI.framework in Frameworks */,
+				6D2C8B4826695229004A0E1B /* InAppSettingsKit in Frameworks */,
 				6D811E9423C76D660041FB7C /* SimpleFeedCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +379,13 @@
 				6D9D1FCC239033FC00D336D8 /* UIColor+RGB.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6D2C8B4926695231004A0E1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6D811E4023C768E60041FB7C /* Flavors */ = {
@@ -542,6 +553,7 @@
 				6D811E4823C76C800041FB7C /* SimpleFeedUI */,
 				6D811E8023C76D660041FB7C /* SimpleFeedCore */,
 				DDDC1D8D1CC016DD00926426 /* Products */,
+				6D2C8B4926695231004A0E1B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -592,6 +604,9 @@
 				6D811EC923CBA4A90041FB7C /* PBXTargetDependency */,
 			);
 			name = SimpleFeedUI;
+			packageProductDependencies = (
+				6D2C8B4A26695231004A0E1B /* InAppSettingsKit */,
+			);
 			productName = SimpleFeedUI;
 			productReference = 6D811E4723C76C800041FB7C /* SimpleFeedUI.framework */;
 			productType = "com.apple.product-type.framework";
@@ -621,12 +636,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDDC1DA31CC016DD00926426 /* Build configuration list for PBXNativeTarget "Simple Feed" */;
 			buildPhases = (
-				357C1A1B242C08B04F22E66C /* [CP] Check Pods Manifest.lock */,
 				DDDC1D881CC016DD00926426 /* Sources */,
 				DDDC1D891CC016DD00926426 /* Frameworks */,
 				DDDC1D8A1CC016DD00926426 /* Resources */,
-				D403ACBE5E6B71FFD5F40464 /* [CP] Embed Pods Frameworks */,
-				F481945A6A017D3EEBB281FD /* [CP] Copy Pods Resources */,
 				68B982DD1E453ABA00F2AD24 /* Embed Frameworks */,
 				6D4818BA241E550800454F91 /* Swift Lint */,
 			);
@@ -638,6 +650,7 @@
 			);
 			name = "Simple Feed";
 			packageProductDependencies = (
+				6D2C8B4726695229004A0E1B /* InAppSettingsKit */,
 			);
 			productName = "Simple Feed";
 			productReference = DDDC1D8C1CC016DD00926426 /* Simple Feed.app */;
@@ -682,6 +695,7 @@
 			mainGroup = DDDC1D831CC016DD00926426;
 			packageReferences = (
 				6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */,
+				6D2C8B4626695229004A0E1B /* XCRemoteSwiftPackageReference "InAppSettingsKit" */,
 			);
 			productRefGroup = DDDC1D8D1CC016DD00926426 /* Products */;
 			projectDirPath = "";
@@ -726,24 +740,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		357C1A1B242C08B04F22E66C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Simple Feed-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6D4818BA241E550800454F91 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -761,39 +757,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		D403ACBE5E6B71FFD5F40464 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Simple Feed/Pods-Simple Feed-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/InAppSettingsKit/InAppSettingsKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InAppSettingsKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Simple Feed/Pods-Simple Feed-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F481945A6A017D3EEBB281FD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Simple Feed/Pods-Simple Feed-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1290,6 +1253,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6D2C8B4626695229004A0E1B /* XCRemoteSwiftPackageReference "InAppSettingsKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/futuretap/InAppSettingsKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.1;
+			};
+		};
 		6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:fonok3/FHNetworking.git";
@@ -1301,6 +1272,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6D2C8B4726695229004A0E1B /* InAppSettingsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D2C8B4626695229004A0E1B /* XCRemoteSwiftPackageReference "InAppSettingsKit" */;
+			productName = InAppSettingsKit;
+		};
+		6D2C8B4A26695231004A0E1B /* InAppSettingsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D2C8B4626695229004A0E1B /* XCRemoteSwiftPackageReference "InAppSettingsKit" */;
+			productName = InAppSettingsKit;
+		};
 		6DD3F7F2248302A40055581A /* FHNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6DD3F7F1248302A40055581A /* XCRemoteSwiftPackageReference "FHNetworking" */;

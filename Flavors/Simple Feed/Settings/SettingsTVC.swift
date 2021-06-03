@@ -15,7 +15,7 @@ class SettingsTVC: IASKAppSettingsViewController, IASKSettingsDelegate {
 
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsTVC.settingDidChange(_:)),
-                                               name: NSNotification.Name(rawValue: kIASKAppSettingChanged), object: nil)
+                                               name: NSNotification.Name.IASKSettingChanged, object: nil)
         showDoneButton = false
         neverShowPrivacySettings = true
         delegate = self
