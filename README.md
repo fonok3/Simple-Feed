@@ -1,4 +1,4 @@
-# Simple Feed
+# Simple Feed <a href="https://apps.apple.com/de/app/simple-feed-rss-reader/id1129792249#?platform=iphone"><img alt="Download" src="documentation/img/app-store-badge.svg" /></a>
 
 ![SwiftLint](https://github.com/fonok3/Simple-Feed/workflows/SwiftLint/badge.svg)
 ![Build and Test](https://github.com/fonok3/Simple-Feed/workflows/Build%20and%20Test/badge.svg)
