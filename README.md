@@ -1,8 +1,10 @@
 # Simple Feed
 
-![SwiftLint](https://github.com/fonok3/Simple-Feed/workflows/SwiftLint/badge.svg)
-![Build and Test](https://github.com/fonok3/Simple-Feed/workflows/Build%20and%20Test/badge.svg)
-![Deploying](https://github.com/fonok3/Simple-Feed/workflows/Deploying/badge.svg)
+[![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
+[![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
+
+[![SwiftLint](https://github.com/fonok3/Simple-Feed/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/fonok3/Simple-Feed/actions/workflows/swiftlint.yml)
+[![Testing](https://github.com/fonok3/Simple-Feed/actions/workflows/buildAndTest.yml/badge.svg)](https://github.com/fonok3/Simple-Feed/actions/workflows/buildAndTest.yml)
 
 <a href="https://apps.apple.com/de/app/simple-feed-rss-reader/id1129792249#?platform=iphone"><img alt="Download" src="documentation/img/app-store-badge.svg" /></a>
 
